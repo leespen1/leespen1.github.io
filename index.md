@@ -9,4 +9,4 @@
 </blockquote>
 ~~~
 
-\figalt{A picture of me.}{/assets/FS21_Headshot_Cropped.jpg}
+\figalt{A picture of me}{/assets/FS21_Headshot_Cropped.jpg}
