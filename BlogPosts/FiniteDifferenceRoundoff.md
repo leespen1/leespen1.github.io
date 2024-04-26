@@ -320,4 +320,5 @@ savefig(pl2, joinpath(@OUTPUT, "central_difference_error.png")) #hide
 \fig{central_difference_error}
 
 We see that our predictions were correct, and we can now approximate $f'(x_0)$
-to a relative precision of $\approx 10^{10.7}$.
+to a relative precision of $\approx 10^{10.7}$, which is more precision than
+what we could do with the first-order method.
