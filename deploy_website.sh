@@ -35,7 +35,7 @@ git add .
 git commit -m "Update website"
 
 # Push to the remote gh-pages branch
-git push -f $REPO_URL $TARGET_BRANCH
+git push -f origin $TARGET_BRANCH
 
 # Optionally switch back to the main branch
 git checkout $SOURCE_BRANCH
