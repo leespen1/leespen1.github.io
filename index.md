@@ -1,5 +1,8 @@
-@def title = "Spencer Lee's Website"
-@def tags = ["syntax", "code"]
++++
+title = "Spencer Lee's Website"
+tags = ["syntax", "code"]
+commonmark_safe = false
++++
 
 ~~~
 <blockquote>
@@ -9,7 +12,13 @@
 </blockquote>
 ~~~
 
-\figalt{A picture of me}{/assets/FS21_Headshot_Cropped.jpg}
+
+~~~
+<div style="padding-left: 0; padding-right: 0; margin-left: -3rem; margin-right: -2rem;">
+<img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Me"
+style="display: block; margin: 0; width: 25%;">
+</div>
+~~~
 
 # About Me
 I am a PhD student at Michigan State University, studying computational
@@ -29,7 +38,7 @@ and good pedagogy.
 
 # Software
 - [QuantumGateDesign.jl](https://github.com/leespen1/QuantumGateDesign.jl)
-- Github: https://github.com/leespen1
+- [My Github](https://github.com/leespen1)
 
 # Blog Posts
 {{blogposts}}

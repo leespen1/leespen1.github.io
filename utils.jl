@@ -37,27 +37,25 @@ Call using {{blogposts}}
     sort!(list, by=sorter, rev=true)
 
     io = IOBuffer()
-    #write(io, """<ul class="blog-posts">""")
-
-    write(io, """<div class="franklin-content">""")
+    write(io, """<ul class="blog-posts">""")
     for (i, post) in enumerate(list)
         if post == "index.md"
             continue
         end
         ps = splitext(post)[1]
-        write(io, "<li>")
-        url = "BlogPosts/$ps/"
-        url_aux = "./BlogPosts/$ps/"
+        url = "/BlogPosts/$ps/"
         surl = strip(url, '/')
         title = pagevar(surl, "title")
         pubdate = pagevar(surl, "date")
         if isnothing(pubdate)
-            date = "$curyear-$curmonth-$curday"
+            pubdate = "$curyear-$curmonth-$curday"
         end
+        write(io, "<li>")
         write(io, """$pubdate: """)
-        write(io, """<a href="$url_aux">$title</a></b><p>""")
+        write(io, """<a href="$url">$title</a></b><p>""")
+        write(io, "</li>")
     end
-    write(io, "</div>")
+    write(io, "</ul>")
     return String(take!(io))
 end
 
