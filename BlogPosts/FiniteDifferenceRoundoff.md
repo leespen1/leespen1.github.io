@@ -1,5 +1,8 @@
-@def title = "Machine Precision Effects on Finite Difference Methods"
-@def tags = ["epsilon", "floating", "point", "errors", "numerical", "precision", "finite", "difference"]
++++
+title = "Machine Precision Effects on Finite Difference Methods"
+date = Date(2024, 4, 26)
+tags = ["epsilon", "floating", "point", "errors", "numerical", "precision", "finite", "difference"]
++++
 
 \toc
 
