@@ -5,15 +5,6 @@ commonmark_safe = false
 +++
 
 ~~~
-<blockquote>
-  <p>"Be it known that, waiving all argument, I take the good old fashioned
-  ground that the whale is a fish."</p>
-  <footer>— <cite>Hermann Melville, <i>Moby Dick</i></cite></footer>
-</blockquote>
-~~~
-
-
-~~~
 <div style="padding-left: 0; padding-right: 0; margin-left: -3rem; margin-right: -2rem;">
 <img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Me"
 style="display: block; margin: 0; width: 25%;">
@@ -37,6 +28,7 @@ and good pedagogy.
 - [High-Order Hermite Optimization: Fast and Exact Gradient Computation in Open-Loop Quantum Optimal Control using a Discrete Adjoint Approach](https://doi.org/10.48550/arXiv.2505.09857)
 
 # Software
+- [QuantumGateDesign.jl Tutorial - SIAM Annual Meeting 2025](https://github.com/leespen1/SIAMQuantumGateDesignTutorial)
 - [QuantumGateDesign.jl](https://github.com/leespen1/QuantumGateDesign.jl)
 - [My Github](https://github.com/leespen1)
 
@@ -45,3 +37,13 @@ and good pedagogy.
 
 # Contact
 - Email: leespen1@msu.edu
+~~~
+
+<blockquote>
+  <p>"Be it known that, waiving all argument, I take the good old fashioned
+  ground that the whale is a fish."</p>
+  <footer>— <cite>Hermann Melville, <i>Moby Dick</i></cite></footer>
+</blockquote>
+~~~
+
+
