@@ -18,9 +18,10 @@ f'(x_0) =  \frac{f(x_0+h) - f(x_0)}{h} + \mathcal{O}(h).
 
 If we ignore the effects of floating point precision, we would choose $h$ to be
 as small as possible. Indeed, analytically we have 
-\nonumber{$$
+
+\begin{equation*}
 f'(x_0) =  \lim_{h \rightarrow 0} \frac{f(x_0+h) - f(x_0)}{h}.
-$$}
+\end{equation*}
 
 
 ## Floating Point Issues
