@@ -38,11 +38,10 @@ and good pedagogy.
 # Contact
 - Email: leespen1@msu.edu
 ~~~
-
 <blockquote>
   <p>"Be it known that, waiving all argument, I take the good old fashioned
   ground that the whale is a fish."</p>
-  <footer>— <cite>Hermann Melville, <i>Moby Dick</i></cite></footer>
+  <footer>— <cite>Herman Melville, <i>Moby Dick</i></cite></footer>
 </blockquote>
 ~~~
 
