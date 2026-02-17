@@ -19,7 +19,7 @@ ignore = ["node_modules/"]
 generate_rss = true
 website_title = "Spencer Lee's Website"
 website_descr = "An academic website for an academic."
-website_url   = "https://leespen1.github.io/"
+website_url   = "https://spencerlee.net/"
 +++
 
 <!--
