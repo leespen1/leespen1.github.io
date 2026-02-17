@@ -10,4 +10,4 @@
       <h1>{{fill title}}</h1>
       <h2>Computational Mathematics, Scientific Software, Quantum Optimal Control</h2>
     </div>{{end}}
-    {{isnotpage index.html}}<div class="franklin-content"><h1 class="page-title">{{fill title}}</h1></div>{{end}}
+    {{isnotpage index.html}}<div class="franklin-content"><h1 class="page-title">{{fill title}}</h1>{{isnotpage BlogPosts/index.html}}{{ispage BlogPosts/*}}<p class="post-date">{{fill date}}</p>{{end}}{{end}}</div>{{end}}

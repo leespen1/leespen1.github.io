@@ -136,6 +136,21 @@ h6 {
   margin-top: 0.5em;
 }
 
+.franklin-content .post-date {
+  color: #888;
+  font-size: 0.9em;
+  margin-top: -0.5em;
+}
+
+.blog-date {
+  color: #888;
+}
+
+ul.blog-posts {
+  list-style: none;
+  padding-left: 0;
+}
+
 .franklin-content h2 {
   margin-top: 2em;
   margin-bottom: 1em;

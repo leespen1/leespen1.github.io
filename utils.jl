@@ -51,8 +51,7 @@ Call using {{blogposts}}
             pubdate = "$curyear-$curmonth-$curday"
         end
         write(io, "<li>")
-        write(io, """$pubdate: """)
-        write(io, """<a href="$url">$title</a></b><p>""")
+        write(io, """<span class="blog-date">[$pubdate]</span> <a href="$url">$title</a>""")
         write(io, "</li>")
     end
     write(io, "</ul>")
