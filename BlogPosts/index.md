@@ -1,2 +1,4 @@
-# Blog Posts
++++
+title = "Blog Posts"
++++
 {{blogposts}}

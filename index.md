@@ -4,14 +4,13 @@ tags = ["syntax", "code"]
 commonmark_safe = false
 +++
 
+# About Me
+
 ~~~
-<div style="padding-left: 0; padding-right: 0; margin-left: -3rem; margin-right: -2rem;">
 <img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Me"
-style="display: block; margin: 0; width: 25%;">
-</div>
+style="float: right; width: 180px; margin: 0 0 1em 1.5em; border-radius: 8px; padding: 0;">
 ~~~
 
-# About Me
 I am a PhD student at Michigan State University, studying computational
 mathematics. My main motivation is to develop numerical software for solving
 cutting-edge scientific problems. My biggest project as a PhD student has been

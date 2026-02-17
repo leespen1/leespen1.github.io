@@ -2,11 +2,12 @@
   <div id="topnav" class="pure-menu pure-menu-horizontal">
     <ul class="pure-menu-list">
       <li class="pure-menu-item {{ispage index.html}}pure-menu-selected{{end}}"><a href="/" class="pure-menu-link">Home</a></li>
-      <li class="pure-menu-item {{ispage menu1/*}}pure-menu-selected{{end}}"><a href="/BlogPosts/" class="pure-menu-link">Blog Posts</a></li>
+      <li class="pure-menu-item {{ispage BlogPosts/*}}pure-menu-selected{{end}}"><a href="/BlogPosts/" class="pure-menu-link">Blog Posts</a></li>
     </ul>
   </div>
   <div id="main"> <!-- Closed in foot -->
-    <div class="header">
+    {{ispage index.html}}<div class="header">
       <h1>{{fill title}}</h1>
-      {{ispage index.html}}<h2>Computational Mathematics, Scientific Software, Quantum Optimal Control</h2>{{end}}
-    </div>
+      <h2>Computational Mathematics, Scientific Software, Quantum Optimal Control</h2>
+    </div>{{end}}
+    {{isnotpage index.html}}<div class="franklin-content"><h1 class="page-title">{{fill title}}</h1></div>{{end}}
