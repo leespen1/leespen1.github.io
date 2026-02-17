@@ -27,3 +27,7 @@ Add here global latex commands to use throughout your pages.
 -->
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
+
+\newcommand{\sidenote}[2]{~~~<label for="sn-!#1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-!#1" class="margin-toggle"/><span class="sidenote">!#2</span>~~~}
+
+\newcommand{\marginnote}[2]{~~~<label for="mn-!#1" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-!#1" class="margin-toggle"/><span class="marginnote">!#2</span>~~~}

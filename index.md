@@ -1,5 +1,5 @@
 +++
-title = "Spencer Lee's Website"
+title = "Spencer Lee"
 tags = ["syntax", "code"]
 commonmark_safe = false
 +++
