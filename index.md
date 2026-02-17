@@ -37,11 +37,20 @@ and good pedagogy.
 # Contact
 - Email: leespen1@msu.edu
 ~~~
-<blockquote>
-  <p>"Be it known that, waiving all argument, I take the good old fashioned
-  ground that the whale is a fish."</p>
-  <footer>— <cite>Herman Melville, <i>Moby Dick</i></cite></footer>
-</blockquote>
+<blockquote id="quote-of-the-day"></blockquote>
+<script>
+var quotes = [
+  {text: "Be it known that, waiving all argument, I take the good old fashioned ground that the whale is a fish.", author: "Herman Melville", source: "Moby Dick"},
+  {text: "In mathematics you don't understand things. You just get used to them.", author: "John von Neumann"},
+  {text: "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem.", author: "John Tukey"}
+];
+var today = new Date();
+var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+var q = quotes[dayOfYear % quotes.length];
+var el = document.getElementById("quote-of-the-day");
+var src = q.source ? ", <i>" + q.source + "</i>" : "";
+el.innerHTML = '<p>"' + q.text + '"</p><footer>— <cite>' + q.author + src + '</cite></footer>';
+</script>
 ~~~
 
 
