@@ -151,6 +151,17 @@ ul.blog-posts {
   padding-left: 0;
 }
 
+/* SVG figures: size images so embedded text ≈ body text size */
+.svg-figure {
+  text-align: center;
+  overflow-x: auto;
+}
+
+.svg-figure img {
+  width: 100%;
+  padding-left: 0;
+}
+
 .franklin-content h2 {
   margin-top: 2em;
   margin-bottom: 1em;

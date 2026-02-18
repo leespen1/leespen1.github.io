@@ -65,8 +65,8 @@ where $c(t)$ is the amplitude of an electromagnetic pulse which we control. \sid
 Using numerical simulation and optimization, I found that the following control
 pulse implements a Hadamard gate very accurately.
 ~~~
-<figure style="text-align:center;">
-  <img src="/assets/img/hadamard_pulse_example.svg" style="width:100%; padding-left:0;">
+<figure class="svg-figure">
+  <img src="/assets/img/hadamard_pulse_example_vertical.svg" style="width: 100% !important; padding-left: 0 !important;">
   <figcaption>Control pulse implementing a Hadamard gate.</figcaption>
 </figure>
 ~~~
