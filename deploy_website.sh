@@ -4,6 +4,14 @@
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
+# Abort if there are uncommitted changes (staged or unstaged) or untracked files
+if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+  echo "ERROR: You have uncommitted changes or untracked files."
+  echo "Please commit or stash them before deploying."
+  git status --short
+  exit 1
+fi
+
 # Build the site using Franklin.jl
 echo "Building the website..."
 julia -e 'using Franklin; verify_links(); optimize(); verify_links()'  # You might use `build()` if you don't want to serve

@@ -173,7 +173,9 @@ ul.blog-posts {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  text-align: center;
+  text-align: left;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .franklin-toc ol ol {
@@ -181,10 +183,15 @@ ul.blog-posts {
 }
 
 .franklin-content th,
-td {
+.franklin-content td {
   font-size: var(--small);
   padding: 10px;
-  border: 1px solid black;
+  border: none;
+}
+
+.franklin-content th {
+  text-align: left;
+  border-bottom: 1px solid black;
 }
 
 .franklin-content blockquote {
@@ -256,6 +263,12 @@ td {
   font-size: 80%;
   padding-left: 10px;
   width: 100%;
+}
+
+.franklin-content figcaption {
+  font-size: 85%;
+  color: #555;
+  margin-top: 0.4em;
 }
 
 /* ==================================================================
