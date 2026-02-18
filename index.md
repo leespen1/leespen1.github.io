@@ -73,7 +73,7 @@ pulse implements a Hadamard gate very accurately.
 
 We can also design multi-qubit gates, like a Controlled NOT
 gate.\sidenote{sn:cnot_note}{This is represented by the dot and circle in the
-same column in the Bell state preparation circuit diagram.}. For each qubit we
+same column in the Bell state preparation circuit diagram.} For each qubit we
 add, the size of the numerical representation of the system doubles, which
 makes simulating the  system more computationally expensive. In addition,
 depending on the Hamiltonian of a given quantum system, the system may have very

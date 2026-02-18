@@ -77,3 +77,50 @@ The content `<div>` is where all your content goes.
 #topnav .pure-menu-selected {
   background: #1f8dd6;
 }
+
+/* Hamburger toggle — hidden by default (desktop) */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+}
+
+/* ==================================================================
+    MOBILE DROPDOWN NAV
+================================================================== */
+
+@media (max-width: 768px) {
+  .nav-toggle-label {
+    display: block;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 0.4em 0.8em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #topnav .pure-menu-list {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ .pure-menu-list {
+    display: block;
+  }
+
+  #topnav .pure-menu-list {
+    width: 100%;
+  }
+
+  #topnav .pure-menu-item {
+    display: block;
+    width: 100%;
+  }
+
+  #topnav .pure-menu-link {
+    display: block;
+    padding: 0.75em 1.2em;
+  }
+}
