@@ -153,9 +153,9 @@ $f(x_0)\epsilon_M/h$. To minimize the error in our computation of $f'(x_0)$, we 
 choose $h$ which makes both terms as small as possible. 
 
 We don't know the coefficients in 
-\nonumber{$$
+\begin{equation*}
 \mathcal{O}(h) = C_1 h + C_2 h^2 + C_3 h^3 + \dots.
-$$}
+\end{equation*}
 If we did know the coefficients, we would have a more accurate approximation
 formula. But, for $h \ll 1$, we can at least ignore the higher order terms 
 $C_2 h^2, C_3 h^3 \rightarrow 0$ since they decrease much faster than $C_1 h$ as
