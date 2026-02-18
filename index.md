@@ -86,19 +86,6 @@ system (while still keeping some properties which are necessary for efficiently
 optimizing the pulse shape) so that we can efficiently design and recalibrate
 pulse shapes to implement accurate, multi-qubit gates.
 
-# Publications
-- [High-Order Hermite Optimization: Fast and Exact Gradient Computation in Open-Loop Quantum Optimal Control using a Discrete Adjoint Approach](https://doi.org/10.48550/arXiv.2505.09857)
-
-# Software
-- [QuantumGateDesign.jl Tutorial - SIAM Annual Meeting 2025](https://github.com/leespen1/SIAMQuantumGateDesignTutorial)
-- [QuantumGateDesign.jl](https://github.com/leespen1/QuantumGateDesign.jl)
-- [My Github](https://github.com/leespen1)
-
-# Blog Posts
-{{blogposts}}
-
-# Contact
-- Email: leespen1@msu.edu
 ~~~
 <blockquote id="quote-of-the-day"></blockquote>
 <script>
@@ -115,5 +102,3 @@ var src = q.source ? ", <i>" + q.source + "</i>" : "";
 el.innerHTML = '<p>"' + q.text + '"</p><footer>— <cite>' + q.author + src + '</cite></footer>';
 </script>
 ~~~
-
-
