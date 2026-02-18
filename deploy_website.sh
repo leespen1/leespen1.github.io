@@ -17,6 +17,9 @@ echo "Building the website..."
 julia -e 'using Franklin; verify_links(); optimize(); verify_links()'  # You might use `build()` if you don't want to serve
 
 
+# Preserve __site (Franklin's cache) so code blocks aren't re-evaluated next deploy
+mv __site /tmp/__site_backup_$$
+
 # Check out the gh-pages branch or create it if it doesn't exist
 if git rev-parse --verify $TARGET_BRANCH; then
   git branch -D $TARGET_BRANCH
@@ -26,11 +29,9 @@ git checkout --orphan $TARGET_BRANCH
 # Delete the old files
 git rm -rf .
 
-# Copy new build from __site to root of the branch
-cp -r __site/* .
+# Copy new build from backup to root of the branch
+cp -r /tmp/__site_backup_$$/* .
 
-# Remove the __site directory if it's copied over
-rmdir __site
 
 # Add changes to git
 git add .
@@ -41,7 +42,8 @@ git commit -m "Update website"
 # Push to the remote gh-pages branch
 git push -f origin $TARGET_BRANCH
 
-# Optionally switch back to the main branch
+# Switch back to the main branch and restore Franklin's cache
 git checkout $SOURCE_BRANCH
+mv /tmp/__site_backup_$$ __site
 
 echo "Deployment successful!"
