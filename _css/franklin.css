@@ -205,7 +205,7 @@ ul.blog-posts {
 
 .franklin-content th,
 .franklin-content td {
-  font-size: var(--small);
+  font-size: var(--normal);
   padding: 10px;
   border: none;
 }
