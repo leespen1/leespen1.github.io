@@ -1,0 +1,117 @@
+# YAML tip: >- is a "block scalar" that folds a multi-line string into a single
+# line (newlines become spaces) and strips the trailing newline. This lets you
+# wrap long LaTeX text across multiple lines here for readability while still
+# producing a single-line string when parsed.
+
+- dates: "2021--Present"
+  title: "Graduate Research Assistant"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  description: >-
+    Researching mathematical problems in quantum computing with Dr. Daniel Appel\"o.
+  items:
+    - >-
+      Created the Julia software package QuantumGateDesign.jl, for optimal control
+      of quantum systems using smooth pulses. Finds ideal pulses quickly using
+      high-order time steps and second-order optimization.
+    - >-
+      Derived discrete adjoint equations for high-order Hermite methods applied
+      to Schr\"odinger's equation, enabling fast and exact gradient computations
+      for quantum optimal control.
+    - >-
+      Investigated using Filon methods to efficiently integrate high-frequency
+      systems of ODEs, e.g. Schr\"odinger's equation for superconducting qubits.
+    - >-
+      Researched using neural ODEs to learn computationally cheap Magnus expansion
+      solutions to Schr\"odinger's equation for accelerated simulation of quantum
+      systems under external control.
+
+- dates: "2023, 2025"
+  title: "Long Workshop Participant"
+  org: "Institute for Pure and Applied Mathematics, University of California, Los Angeles"
+  location: "Los Angeles, CA"
+  items:
+    - >-
+      Collaborated with a diverse group of mathematicians, physicists, and computer
+      scientists from academia and industry on problems in quantum computing (2023)
+      and non-commutative optimal transport (2025).
+    - >-
+      Organized a working group exploring optimal-transport-inspired objective
+      functions for quantum control.
+
+- dates: "2024"
+  title: "Project Manager, G-RIPS"
+  org: "Advanced Institute for Materials Research, Tohoku Univeristy"
+  location: "Sendai, Japan"
+  items:
+    - >-
+      Led a group of five graduate students from the United States and Japan in
+      developing novel classical parameter-setting strategies for the Quantum
+      Approximate Optimization Algorithm (QAOA).
+    - >-
+      Cooperated with researchers from Mitsubishi Electric, who sponsored
+      this project.
+
+- dates: "2023"
+  title: "Visiting Scholar"
+  org: "Los Alamos National Laboratory"
+  location: "Los Alamos, NM"
+  items:
+    - "Studied physical and numerical considerations for the simulation of plasmas."
+    - >-
+      Accelerated simulation of runaway electrons in Tokamak fusion reactors
+      using CUDA-enabled GPUs.
+    - >-
+      Visualized electron behavior using Poincar\'{e} plots to identify
+      computationally challenging regions of the reactor.
+
+- dates: "2022"
+  title: "Computing Student Intern"
+  org: "Lawrence Livermore National Laboratory"
+  location: "Livermore, CA"
+  items:
+    - >-
+      Used compositional techniques to create high-order integration methods from
+      low-order, symmetric ones in the quantum control package Juqbox.jl.
+    - >-
+      Demonstrated by numerical experiments that high-order methods accurately
+      simulate the physics of relevant 2-qubit systems at one-tenth the
+      computational cost of second-order St\"ormer-Verlet.
+    - >-
+      Achieved similar results using the implicit midpoint rule, a more
+      stable alternative, as the base method.
+
+- dates: "2020--2021"
+  title: "Post-Baccalaureate Research Associate"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  items:
+    - >-
+      Member of the FEX-Hub project for development of hardware to manage the flow
+      of trigger data from the ATLAS detector of the Large Hadron Collider.
+    - >-
+      Wrote object-oriented Python scripts to conduct Integrated Bit Error Ratio
+      Tests (IBERT) of multi-gigabit transceivers on FPGA and generate eye
+      diagrams to analyze accuracy when transmitting at high bandwidths.
+    - "Added new features to FPGA firmware using VHDL in Vivado Design Suite."
+
+- dates: "2019"
+  title: "Summer Research Associate"
+  org: "CERN"
+  location: "Geneva, Switzerland"
+  items:
+    - >-
+      Analyzed C firmware of a microcontroller for ATCA compliance as part of
+      upgrades to the Level 1 Calorimeter Trigger of the Large Hadron Collider.
+
+- dates: "2016--2020"
+  title: "Undergraduate Research Associate"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  items:
+    - >-
+      Created an interactive Python GUI to run and display perfSONAR network
+      measurement tests, manage Ethernet switch stress tests, and generate
+      automated reports.
+    - >-
+      Organized and configured Linux test nodes for use in network stress tests.

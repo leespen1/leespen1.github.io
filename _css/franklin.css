@@ -444,6 +444,90 @@ label.margin-toggle:not(.sidenote-number) {
   display: none;
 }
 
+/* ==================================================================
+    CV STYLES
+================================================================== */
+
+.cv-entry {
+  margin-bottom: 1.2em;
+}
+
+.cv-entry-header {
+  display: flex;
+  gap: 0.8em;
+  align-items: baseline;
+}
+
+.cv-dates {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  color: #555;
+  white-space: nowrap;
+  min-width: 6em;
+  flex-shrink: 0;
+}
+
+.cv-title {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.cv-entry-meta {
+  color: #555;
+  margin-left: 6.8em;
+  font-style: italic;
+}
+
+.cv-description {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  margin-left: 6.8em;
+}
+
+.cv-items {
+  margin-top: 0.3em;
+  margin-left: 6.8em;
+  padding-left: 1.2em;
+}
+
+.cv-items li {
+  margin-bottom: 0.3em;
+}
+
+.cv-bib-entry {
+  display: flex;
+  gap: 0.8em;
+  margin-bottom: 0.8em;
+  align-items: baseline;
+}
+
+.cv-bib-text {
+  flex: 1;
+}
+
+.cv-bib-entry a {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .cv-entry-header {
+    flex-direction: column;
+    gap: 0;
+  }
+  .cv-entry-meta,
+  .cv-description,
+  .cv-items {
+    margin-left: 0;
+  }
+  .cv-bib-entry {
+    flex-direction: column;
+    gap: 0.2em;
+  }
+}
+
+/* ==================================================================
+    TUFTE-STYLE SIDENOTES (continued)
+================================================================== */
+
 @media (max-width: 760px) {
   label.margin-toggle:not(.sidenote-number) {
     display: inline;
