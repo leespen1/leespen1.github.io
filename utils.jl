@@ -10,7 +10,12 @@ function latex_to_html(s::String)
                    "A"=>"Ä","E"=>"Ë","I"=>"Ï","O"=>"Ö","U"=>"Ü")
     acute  = Dict("a"=>"á","e"=>"é","i"=>"í","o"=>"ó","u"=>"ú",
                    "A"=>"Á","E"=>"É","I"=>"Í","O"=>"Ó","U"=>"Ú")
-    # \"o -> ö  (umlaut)
+    # {\"o} -> ö  (umlaut with braces)
+    s = replace(s, r"\{\\\\\"(\w)\}" => function(m)
+        ch = string(m[end-1])
+        get(umlaut, ch, ch)
+    end)
+    # \"o -> ö  (umlaut without braces)
     s = replace(s, r"\\\\\"(\w)" => function(m)
         ch = string(last(m))
         get(umlaut, ch, ch)
@@ -187,8 +192,13 @@ function hfun_cv_publications()
             write(io, ", $(pages)")
         end
         write(io, ".")
-        if url != ""
-            write(io, """ <a href="$(url)">[link]</a>""")
+        link = if doi != ""
+            startswith(doi, "http") ? doi : "https://doi.org/$doi"
+        else
+            url
+        end
+        if link != ""
+            write(io, """ <a href="$(link)">[link]</a>""")
         end
         write(io, "</span>\n</div>\n")
     end
@@ -208,6 +218,7 @@ function hfun_cv_techreports()
         institution = get(e.fields, "institution", "")
         etype = get(e.fields, "type", "")
         url = get(e.fields, "url", "")
+        doi = get(e.fields, "doi", "")
 
         write(io, """<div class="cv-bib-entry">\n""")
         write(io, """<span class="cv-dates">$(year)</span>\n""")
@@ -220,8 +231,13 @@ function hfun_cv_techreports()
             write(io, ". $(etype)")
         end
         write(io, ".")
-        if url != ""
-            write(io, """ <a href="$(url)">[link]</a>""")
+        link = if doi != ""
+            startswith(doi, "http") ? doi : "https://doi.org/$doi"
+        else
+            url
+        end
+        if link != ""
+            write(io, """ <a href="$(link)">[link]</a>""")
         end
         write(io, "</span>\n</div>\n")
     end

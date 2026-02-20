@@ -26,9 +26,6 @@ Ph.D. in Computational Mathematics, Science, & Engineering
 @@cv-entry-meta
 Michigan State University, East Lansing, MI, GPA: 3.94/4.0
 @@
-@@cv-description
-Course Highlights: Numerical Methods for Differential Equations, Quantum Mechanics, Applied Machine Learning, Numerical Linear Algebra, Data Science, Parallel Computing.
-@@
 @@
 
 @@cv-entry

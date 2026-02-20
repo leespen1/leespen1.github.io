@@ -7,8 +7,6 @@
   title: "Graduate Research Assistant"
   org: "Michigan State University"
   location: "East Lansing, MI"
-  description: >-
-    Researching mathematical problems in quantum computing with Dr. Daniel Appel\"o.
   items:
     - >-
       Created the Julia software package QuantumGateDesign.jl, for optimal control
