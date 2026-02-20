@@ -2,6 +2,15 @@
 title = "Contact"
 +++
 
+I am looking for a job after I graduate! If you are looking for someone with
+experience in writing high-performance software for physics simulations,
+especially for quantum optimal control, please email me at
+[leespen1@msu.edu](mailto:leespen1@msu.edu), or contact me 
+[on LinkedIn](https://www.linkedin.com/in/spencer-lee-msu).
+
+Also feel free to reach out if you have any questions about my research or
+software.
+
 ~~~
 <ul class="blog-posts">
   <li><span class="blog-date">[Email]</span> <a href="mailto:leespen1@msu.edu">leespen1@msu.edu</a></li>

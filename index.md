@@ -14,10 +14,19 @@ I develop high-performance numerical methods and scientific software for quantum
 optimal control and other cutting-edge scientific problems. I am a PhD candidate
 in Computational Mathematics, Science, and Engineering at Michigan State
 University, and I am the developer of the open-source Julia package
-[QuantumGateDesign.jl](https://github.com/leespen1/QuantumGateDesign.jl), which
+[**QuantumGateDesign.jl**](https://github.com/leespen1/QuantumGateDesign.jl), which
 quickly solves quantum optimal control problems using a novel, high-order
-numerical method based on Hermite interpolation.
+numerical method based on Hermite interpolation. You can read about the method
+in our 
+[**publication in Journal of Computational Physics**](https://doi.org/10.1016/j.jcp.2026.114697)
+(or in the 
+[arXiv preprint](https://arxiv.org/abs/2505.09857)).
 
+I am looking for a job after I graduate! If you are looking for someone with
+experience in writing high-performance software for physics simulations,
+especially for quantum optimal control, please email me at
+[leespen1@msu.edu](mailto:leespen1@msu.edu), or contact me 
+[on LinkedIn](https://www.linkedin.com/in/spencer-lee-msu).
 
 
 # About Quantum Optimal Control
@@ -86,6 +95,7 @@ system (while still keeping some properties which are necessary for efficiently
 optimizing the pulse shape) so that we can efficiently design and recalibrate
 pulse shapes to implement accurate, multi-qubit gates.
 
+# Quote of the Day
 ~~~
 <blockquote id="quote-of-the-day"></blockquote>
 <script>

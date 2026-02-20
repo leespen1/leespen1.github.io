@@ -108,6 +108,16 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* On narrow screens, stack the headshot above the text instead of floating. */
+@media (max-width: 480px) {
+  .franklin-content img[alt="Picture of Me"] {
+    float: none !important;
+    display: block;
+    margin: 0 auto 1em auto !important;
+    width: 50% !important;
+  }
+}
+
 /* ==================================================================
     TITLES
 ================================================================== */
