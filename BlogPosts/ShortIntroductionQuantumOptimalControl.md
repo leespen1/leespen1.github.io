@@ -12,6 +12,6 @@ accessible to people without much background in quantum computing or optimal
 control.
 
 You can download the PDF
-[here](/assets/pdf/Short_Introduction_To_Quantum_Optimal_Control.pdf)
+[here](/assets/pdf/Short_Introduction_To_Quantum_Optimal_Control.pdf).
 
 

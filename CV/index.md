@@ -2,9 +2,10 @@
 title = "Resume / CV"
 +++
 
-\style{text-align: center; margin-bottom: 2em;}{
-  [Download CV (PDF)](/assets/pdf/SpencerLeeCV.pdf)
-}
+Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé.
+
+Click [here](/assets/pdf/SpencerLeeCV.pdf) to download my CV in PDF format, or
+read the web version below.
 
 \toc
 
