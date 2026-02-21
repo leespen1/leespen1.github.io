@@ -73,10 +73,10 @@ Michigan State University Rasmussen Fellowship Award
 @@cv-entry
 @@cv-entry-header
 @@cv-dates
-2020
+2019
 @@
 @@cv-title
-Lawrence W. Hantel Endowed Fellowship Fund
+McCartney Scholarship Award
 @@
 @@
 @@
@@ -84,10 +84,10 @@ Lawrence W. Hantel Endowed Fellowship Fund
 @@cv-entry
 @@cv-entry-header
 @@cv-dates
-2019
+2018
 @@
 @@cv-title
-McCartney Scholarship Award
+Lawrence W. Hantel Endowed Fellowship Fund
 @@
 @@
 @@
