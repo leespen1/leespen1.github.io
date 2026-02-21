@@ -54,7 +54,7 @@ Graduated with High Honors, Member of Honors College.
 2022--2027
 @@
 @@cv-title
-National Science Foundation Graduate Research Fellowship
+National Science Foundation Graduate Research Fellowship (\$159,000)
 @@
 @@
 @@
@@ -65,7 +65,7 @@ National Science Foundation Graduate Research Fellowship
 2021
 @@
 @@cv-title
-Michigan State University Rasmussen Fellowship Award
+Michigan State University Rasmussen Fellowship Award (\$5,000)
 @@
 @@
 @@
@@ -76,7 +76,7 @@ Michigan State University Rasmussen Fellowship Award
 2019
 @@
 @@cv-title
-McCartney Endowed Educational Enrichment Fund
+McCartney Endowed Educational Enrichment Fund (\$500)
 @@
 @@
 @@
@@ -87,7 +87,7 @@ McCartney Endowed Educational Enrichment Fund
 2018
 @@
 @@cv-title
-Lawrence W. Hantel Endowed Fellowship Fund
+Lawrence W. Hantel Endowed Fellowship Fund (\$2,300)
 @@
 @@
 @@
@@ -98,7 +98,7 @@ Lawrence W. Hantel Endowed Fellowship Fund
 2018
 @@
 @@cv-title
-Paul and Wilma Dressel Endowed Scholarship for Mathematics
+Paul and Wilma Dressel Endowed Scholarship for Mathematics (\$1,250)
 @@
 @@
 @@
