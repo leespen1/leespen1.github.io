@@ -76,7 +76,7 @@ Michigan State University Rasmussen Fellowship Award
 2019
 @@
 @@cv-title
-McCartney Scholarship Award
+McCartney Endowed Educational Enrichment Fund
 @@
 @@
 @@
