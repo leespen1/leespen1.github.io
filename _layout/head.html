@@ -42,6 +42,39 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="{{fill website_url}}{{fill fd_url}}">
 
+  <!-- JSON-LD structured data (homepage) -->
+  {{ispage index.html}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Spencer Lee",
+    "url": "https://spencerlee.net/",
+    "image": "https://spencerlee.net/assets/FS21_Headshot_Cropped.jpg",
+    "jobTitle": "PhD Candidate in Computational Mathematics",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Michigan State University"
+    },
+    "knowsAbout": [
+      "Computational Mathematics",
+      "Quantum Optimal Control",
+      "Scientific Software",
+      "Numerical Methods",
+      "Quantum Computing",
+      "Julia Programming Language"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/spencer-lee-msu",
+      "https://github.com/leespen1",
+      "https://scholar.google.com/citations?user=ZC6ydb8AAAAJ",
+      "https://orcid.org/0000-0002-9262-4763",
+      "https://directory.natsci.msu.edu/directory/Profiles/Person/100941"
+    ]
+  }
+  </script>
+  {{end}}
+
   {{ispage search/*}}
   <!-- Lunr.js search (only on search results page) -->
   <script src="/libs/lunr/lunr.min.js"></script>
