@@ -1,5 +1,5 @@
 <div id="layout">
-  <div id="topnav" class="pure-menu pure-menu-horizontal">
+  <nav id="topnav" class="pure-menu pure-menu-horizontal">
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
     <ul class="pure-menu-list">
@@ -14,8 +14,8 @@
         </form>
       </li>
     </ul>
-  </div>
-  <div id="main"> <!-- Closed in foot -->
+  </nav>
+  <div id="main" role="main"> <!-- Closed in foot -->
     {{ispage index.html}}<div class="header">
       <h1>{{fill title}}</h1>
       <h2>Computational Mathematics<br>Scientific Software<br>Quantum Optimal Control</h2>
