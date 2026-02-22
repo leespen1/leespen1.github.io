@@ -2,3 +2,4 @@ __site/
 .DS_Store
 node_modules/
 package-lock.json
+_libs/lunr/lunr_index.js
