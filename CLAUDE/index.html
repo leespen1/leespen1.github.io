@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/pure.css">
+<link rel="stylesheet" href="/css/side-menu.css">
+<link rel="stylesheet" href="/css/franklin.css">
+<!-- style adjustments -->
+<style>
+.franklin-content{padding-left:10%;}
+@media (min-width: 940px) {
+  .franklin-content {width: 705px; margin-left: auto; margin-right: auto;}
+}
+</style>
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>CLAUDE.md</title>  
+
+  <!-- SEO meta tags -->
+  <meta name="author" content="Spencer Lee">
+  
+  
+  <meta name="description" content="Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Research in quantum optimal control, numerical methods, and scientific software.">
+  
+
+  <!-- Open Graph (social media link previews) -->
+  
+  <meta property="og:title" content="CLAUDE.md">
+  
+  
+  
+  
+  <meta property="og:description" content="Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Research in quantum optimal control, numerical methods, and scientific software.">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spencerlee.net//CLAUDE/index.html">
+  
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://spencerlee.net//CLAUDE/index.html">
+
+  <!-- JSON-LD structured data (homepage) -->
+  
+
+  
+</head>
+<body>
+<div id="layout">
+  <nav id="topnav" class="pure-menu pure-menu-horizontal">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item "><a href="/" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item "><a href="/CV/" class="pure-menu-link">Resume / CV</a></li>
+      <li class="pure-menu-item "><a href="/Software/" class="pure-menu-link">Software</a></li>
+      <li class="pure-menu-item "><a href="/BlogPosts/" class="pure-menu-link">Blog</a></li>
+      <li class="pure-menu-item "><a href="/Contact/" class="pure-menu-link">Contact</a></li>
+      <li class="pure-menu-item" id="search-menu-item">
+        <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+          <input class="search-input" name="q" placeholder="Search..." type="text">
+        </form>
+      </li>
+    </ul>
+  </nav>
+  <div id="main" role="main"> <!-- Closed in foot -->
+    
+    <div class="franklin-content"><h1 class="page-title">CLAUDE.md</h1></div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="claudemd"><a href="#claudemd" class="header-anchor">CLAUDE.md</a></h1>
+<p>This file provides guidance to Claude Code &#40;claude.ai/code&#41; when working with code in this repository.</p>
+<h2 id="project_overview"><a href="#project_overview" class="header-anchor">Project Overview</a></h2>
+<p>Personal academic website for Spencer Lee, built with <strong>Franklin.jl</strong> &#40;a Julia-based static site generator&#41;. Hosted on GitHub Pages at https://leespen1.github.io/.</p>
+<h2 id="build_deploy"><a href="#build_deploy" class="header-anchor">Build &amp; Deploy</a></h2>
+<p><strong>Local development server:</strong></p>
+<pre><code class="language-bash">julia -e &#39;using Franklin; serve&#40;&#41;&#39;</code></pre>
+<p><strong>Build and deploy to GitHub Pages &#40;gh-pages branch&#41;:</strong></p>
+<pre><code class="language-bash">bash deploy_website.sh</code></pre>
+<p>This runs <code>julia -e &#39;using Franklin; verify_links&#40;&#41;; optimize&#40;&#41;; verify_links&#40;&#41;&#39;</code>, builds to <code>__site/</code>, then force-pushes to the <code>gh-pages</code> branch.</p>
+<p><strong>Install dependencies &#40;first time&#41;:</strong></p>
+<pre><code class="language-bash">julia -e &#39;using Pkg; Pkg.instantiate&#40;&#41;&#39;</code></pre>
+<h2 id="architecture"><a href="#architecture" class="header-anchor">Architecture</a></h2>
+<ul>
+<li><p><strong>Franklin.jl</strong> processes Markdown files with TOML front matter &#40;<code>&#43;&#43;&#43; ... &#43;&#43;&#43;</code>&#41; into static HTML</p>
+</li>
+<li><p><strong>config.md</strong> — Global site configuration &#40;author, RSS settings, LaTeX macros&#41;</p>
+</li>
+<li><p><strong>utils.jl</strong> — Custom Julia functions callable from Markdown via <code>&#123;&#123;functionname&#125;&#125;</code>. Key function: <code>hfun_blogposts&#40;&#41;</code> auto-generates the blog post list sorted by date</p>
+</li>
+<li><p><strong>_layout/</strong> — HTML templates &#40;head, footer, sidebar navigation&#41;</p>
+</li>
+<li><p><strong>_css/</strong> — Stylesheets &#40;Pure.css framework &#43; Franklin/sidebar styles&#41;</p>
+</li>
+<li><p><strong>_libs/</strong> — Third-party JS: KaTeX &#40;math rendering&#41;, highlight.js &#40;code syntax&#41;</p>
+</li>
+<li><p><strong>__site/</strong> — Generated output directory &#40;gitignored&#41;</p>
+</li>
+</ul>
+<h2 id="blog_posts"><a href="#blog_posts" class="header-anchor">Blog Posts</a></h2>
+<p>Blog posts live in <code>BlogPosts/</code> as Markdown files with required front matter:</p>
+<pre><code class="language-toml">&#43;&#43;&#43;
+title &#61; &quot;Post Title&quot;
+date &#61; Date&#40;YYYY, MM, DD&#41;
+tags &#61; &#91;&quot;tag1&quot;, &quot;tag2&quot;&#93;
+&#43;&#43;&#43;</code></pre>
+<p>The blog index &#40;<code>BlogPosts/index.md</code>&#41; uses <code>&#123;&#123;blogposts&#125;&#125;</code> to call <code>hfun_blogposts&#40;&#41;</code> in <code>utils.jl</code>, which auto-discovers and lists all posts sorted by date &#40;newest first&#41;. Adding a new <code>.md</code> file to <code>BlogPosts/</code> with proper front matter is all that&#39;s needed.</p>
+<h2 id="note"><a href="#note" class="header-anchor">Note</a></h2>
+<p><code>config.md</code> line 20 has a typo: <code>website_title &#61; &quot;Spencer Lee&#39;s WebsiteF&quot;</code> &#40;trailing &quot;F&quot;&#41;.</p>
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Spencer Lee. Last modified: February 22, 2026.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+      </div> <!-- end of id=main -->
+  </div> <!-- end of id=layout -->
+  
+  
+      <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+  
+</body>
+</html>
