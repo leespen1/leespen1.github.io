@@ -58,11 +58,23 @@ The content `<div>` is where all your content goes.
   background: #2c3e50;
   width: 100%;
   z-index: 1000;
+  overflow: hidden;
+}
+
+#topnav .pure-menu-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+#topnav .pure-menu-item {
+  flex-shrink: 0;
 }
 
 #topnav .pure-menu-link {
   color: #999;
   padding: 0.6em 1.2em;
+  white-space: nowrap;
 }
 
 #topnav .pure-menu-link:hover,
@@ -88,6 +100,81 @@ The content `<div>` is where all your content goes.
 }
 
 /* ==================================================================
+    SEARCH BAR IN NAV
+================================================================== */
+
+#search-menu-item {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding: 0.3em 0.6em;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#lunrSearchForm {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  min-width: 0;
+}
+
+.search-input {
+  background: #1a2a3a;
+  border: 1px solid #4a6a8a;
+  color: #eee;
+  padding: 0.3em 0.6em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  width: 140px;
+  min-width: 60px;
+  flex-shrink: 1;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1f8dd6;
+  background: #1e3450;
+}
+
+.search-submit {
+  background: #1f8dd6;
+  color: #fff;
+  border: none;
+  padding: 0.3em 0.7em;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85em;
+  flex-shrink: 0;
+}
+
+.search-submit:hover {
+  background: #2a9def;
+}
+
+/* Search results page */
+#searchResults ul {
+  list-style: none;
+  padding: 0;
+}
+
+#searchResults li {
+  margin-bottom: 0.8em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid #eee;
+}
+
+#searchResults .result-title a {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+/* ==================================================================
     MOBILE DROPDOWN NAV
 ================================================================== */
 
@@ -104,10 +191,11 @@ The content `<div>` is where all your content goes.
 
   #topnav .pure-menu-list {
     display: none;
+    flex-direction: column;
   }
 
   #nav-toggle:checked ~ .pure-menu-list {
-    display: block;
+    display: flex;
   }
 
   #topnav .pure-menu-list {
@@ -117,6 +205,10 @@ The content `<div>` is where all your content goes.
   #topnav .pure-menu-item {
     display: block;
     width: 100%;
+  }
+
+  #search-menu-item {
+    margin-left: 0;
   }
 
   #topnav .pure-menu-link {

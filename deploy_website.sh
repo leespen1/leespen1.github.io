@@ -14,7 +14,7 @@ fi
 
 # Build the site using Franklin.jl
 echo "Building the website..."
-julia -e 'using Franklin; verify_links(); optimize(); verify_links()'  # You might use `build()` if you don't want to serve
+julia -e 'using Franklin; verify_links(); optimize(); lunr(); verify_links()'
 
 
 # Preserve __site (Franklin's cache) so code blocks aren't re-evaluated next deploy
