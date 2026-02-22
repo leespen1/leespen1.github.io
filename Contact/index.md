@@ -1,5 +1,7 @@
 +++
 title = "Contact"
+description = "Contact information for Spencer Lee — email, LinkedIn, OrcID, and Google Scholar."
+tags = ["contact"]
 +++
 
 I am looking for a job after I graduate! If you are looking for someone with

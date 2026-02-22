@@ -1,5 +1,7 @@
 +++
 title = "Software"
+description = "Open-source software by Spencer Lee, including QuantumGateDesign.jl for quantum optimal control."
+tags = ["software", "Julia", "quantum"]
 +++
 
 You can find all of my projects on [my GitHub](https://github.com/leespen1).

@@ -1,7 +1,8 @@
 +++
 title = "Machine Precision Effects on Finite Difference Methods"
 date = Date(2024, 4, 26)
-tags = ["epsilon", "floating", "point", "errors", "numerical", "precision", "finite", "difference"]
+tags = ["epsilon", "floating", "point", "errors", "numerical", "precision", "finite", "difference", "derivatives", "calculus", "scientific computing", "roundoff"]
+description = "How machine precision and floating-point rounding errors affect finite difference approximations of derivatives."
 +++
 
 \toc

@@ -1,5 +1,7 @@
 +++
 title = "Resume / CV"
+description = "Spencer Lee's academic CV — experience, publications, talks, awards, and education in computational mathematics."
+tags = ["CV", "resume"]
 +++
 
 Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé.

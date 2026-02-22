@@ -10,6 +10,37 @@
   {{if hascode}} {{insert head_highlight.html }}   {{end}}
   {{insert style.html}}
   {{isdef title}} <title>{{fill title}}</title>  {{end}}
+
+  <!-- SEO meta tags -->
+  <meta name="author" content="{{fill author}}">
+  {{isdef description}}
+  <meta name="description" content="{{fill description}}">
+  {{end}}
+  {{isnotdef description}}
+  <meta name="description" content="{{fill website_descr}}">
+  {{end}}
+
+  <!-- Open Graph (social media link previews) -->
+  {{isdef title}}
+  <meta property="og:title" content="{{fill title}}">
+  {{end}}
+  {{isnotdef title}}
+  <meta property="og:title" content="{{fill website_title}}">
+  {{end}}
+  {{isdef description}}
+  <meta property="og:description" content="{{fill description}}">
+  {{end}}
+  {{isnotdef description}}
+  <meta property="og:description" content="{{fill website_descr}}">
+  {{end}}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{fill website_url}}{{fill fd_url}}">
+  {{isdef image}}
+  <meta property="og:image" content="{{fill website_url}}{{fill image}}">
+  {{end}}
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{fill website_url}}{{fill fd_url}}">
 </head>
 <body>
 {{insert sidebar.html}}
