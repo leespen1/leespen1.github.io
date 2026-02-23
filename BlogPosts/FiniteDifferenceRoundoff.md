@@ -185,9 +185,9 @@ h &= \sqrt{\epsilon}
 Let's assume $\epsilon \approx \epsilon_M$, where $\epsilon_M$ is the machine
 precision, as returned by `eps(Float64)`. That is, $\epsilon \approx 10^{-16}$,
 giving us
-\nonumber{$$
+\begin{equation*}
 h_{\textrm{ideal}} = 10^{-8}.
-$$}
+\end{equation*}
 Plugging $h_{\textrm{ideal}}$ back into equation \eqref{eq:error_eqn}, we see that we expect the error to be on the
 order of $\epsilon/h + h \approx 10^{-8}$
 
@@ -199,8 +199,8 @@ with several values of $h$, and check the relative error in the computed value
 compared to the analytic solution.
 
 ```julia:myplot1
-using Plots
-using LaTeXStrings
+using CairoMakie
+CairoMakie.set_theme!(CairoMakie.theme_latexfonts(); fontsize=14, Axis=(titlegap=10,))
 
 f(x) = exp(2*x)
 fprime_finite_diff(x, h) = (f(x+h) - f(x)) / h
@@ -208,25 +208,24 @@ fprime_finite_diff(x, h) = (f(x+h) - f(x)) / h
 x0 = 1.0
 fprime_analytic = 2*exp(2*x0)
 
-h_vals = [10.0 ^ i for i in -15:0.5:-1]
+h_vals = [10.0 ^ i for i in -15:0.5:0]
 fprime_finite_diff_vals = [fprime_finite_diff(x0, h) for h in h_vals]
 
 fprime_finite_diff_errors = abs.(fprime_finite_diff_vals .- fprime_analytic)
 fprime_finite_diff_relative_errors = fprime_finite_diff_errors ./ fprime_analytic
 
-pl = plot(h_vals, fprime_finite_diff_relative_errors,
-          xscale=:log10, yscale=:log10, label="Relative Error",
-          xlabel=L"h", ylabel="Relative Error",
-          title = raw"\bf Finite Difference Approximation of exp(2x)",
-          lw=2.5, tickfontsize=18, guidefontsize=24, legendfontsize=18,
-          ylims=(1e-15, 1e0), xlims=(1e-15, 1e0),
-          yticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          xticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          titlefontsize=24)
-vline!(pl, [1e-8], label=raw"h=1e-8")
-hline!(pl, [1e-8], label="Error=1e-8")
+fig = Figure(size=(468, 350))
+ax = Axis(fig[1, 1],
+    xscale=log10, yscale=log10,
+    xlabel=L"h", ylabel="Relative Error",
+    title=L"Finite Difference Approximation of $f(x) = e^{2x}$",
+    limits=(1e-15, 1e0, 1e-15, 1e0))
+vlines!(ax, [1e-8], linewidth=2, linestyle=:dash, color=Makie.wong_colors()[2], label="h=1e-8")
+hlines!(ax, [1e-8], linewidth=2, linestyle=:dash, color=Makie.wong_colors()[3], label="Error=1e-8")
+lines!(ax, h_vals, fprime_finite_diff_relative_errors, linewidth=2, color=Makie.wong_colors()[1], label="Relative Error")
+Legend(fig[2, 1], ax, framevisible=false, orientation=:horizontal)
 
-savefig(pl, joinpath(@OUTPUT, "finite_difference_error.png")) #hide
+save(joinpath(@OUTPUT, "finite_difference_error.svg"), fig) #hide
 ```
 \fig{finite_difference_error}
 
@@ -249,24 +248,21 @@ in that equation on a log-log scale and found the point where they intersect.
 g1(h) = 1e-16 / h
 g2(h) = h
 
-h_vals = [10.0 ^ i for i in -15:0.5:-1]
+h_vals = [10.0 ^ i for i in -15:0.5:0]
 g1_vals = [g1(h) for h in h_vals]
 g2_vals = [g2(h) for h in h_vals]
 
-pl = plot(h_vals, g1_vals,
-          xscale=:log10, yscale=:log10, 
-          xlabel=L"h",
-          title = raw"\bf Roundoff vs Approximation Errors",
-          label=raw"\epsilon / h (Roundoff Error)",
-          lw=2.5, tickfontsize=18, guidefontsize=24, legendfontsize=18,
-          ylims=(1e-15, 1e0), xlims=(1e-15, 1e0),
-          yticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          xticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          titlefontsize=24)
-          
-plot!(pl, h_vals, g2_vals, label="h (Approximation Error)")
+fig = Figure(size=(468, 350))
+ax = Axis(fig[1, 1],
+    xscale=log10, yscale=log10,
+    xlabel=L"h",
+    title="Roundoff vs Approximation Errors", titlefont=:regular,
+    limits=(1e-15, 1e0, 1e-15, 1e0))
+lines!(ax, h_vals, g1_vals, linewidth=2, color=Makie.wong_colors()[1], label="ε / h (Roundoff Error)")
+lines!(ax, h_vals, g2_vals, linewidth=2, color=Makie.wong_colors()[2], label="h (Approximation Error)")
+Legend(fig[2, 1], ax, framevisible=false, orientation=:horizontal)
 
-savefig(pl, joinpath(@OUTPUT, "finite_difference_optimization.png")) #hide
+save(joinpath(@OUTPUT, "finite_difference_optimization.svg"), fig) #hide
 ```
 \fig{finite_difference_optimization}
 
@@ -280,20 +276,20 @@ higher-order method to obtain a more accurate result, but then our ideal
 value for $h$ will change. Let's consider the second-order central difference
 method
 
-\nonumber{$$
+\begin{equation*}
 f'(x) =  \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2).
-$$}
+\end{equation*}
 
 Accounting for roundoff errors and ignoring constant factors as we did before,
 we get
-\nonumber{$$
+\begin{equation*}
 \textrm{Error} \approx \frac{\epsilon_M}{h} + h^2,
-$$}
+\end{equation*}
 which can be minimized by choosing
-\nonumber{$$
+\begin{equation*}
     h_{\textrm{ideal}} = \epsilon_M^{1/3} \approx 10^{-5.3} \implies
     \textrm{Error} \approx 10^{-10.7}.
-$$}
+\end{equation*}
 ```julia:myplot1
 f(x) = exp(2*x)
 fprime_central_diff(x, h) = (f(x+h) - f(x-h)) / (2*h)
@@ -301,25 +297,24 @@ fprime_central_diff(x, h) = (f(x+h) - f(x-h)) / (2*h)
 x0 = 1.0
 fprime_analytic = 2*exp(2*x0)
 
-h_vals = [10.0 ^ i for i in -15:0.5:-1]
+h_vals = [10.0 ^ i for i in -15:0.5:0]
 fprime_central_diff_vals = [fprime_central_diff(x0, h) for h in h_vals]
 
 fprime_central_diff_errors = abs.(fprime_central_diff_vals .- fprime_analytic)
 fprime_central_diff_relative_errors = fprime_central_diff_errors ./ fprime_analytic
 
-pl2 = plot(h_vals, fprime_central_diff_relative_errors,
-          xscale=:log10, yscale=:log10, label="Relative Error",
-          xlabel=L"h", ylabel="Relative Error",
-          title = raw"\bf Central Difference Approximation of exp(2x)",
-          lw=2.5, tickfontsize=18, guidefontsize=24, legendfontsize=18,
-          ylims=(1e-15, 1e0), xlims=(1e-15, 1e0),
-          yticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          xticks=[1e-15, 1e-12, 1e-9, 1e-6, 1e-3, 1e0],
-          titlefontsize=24)
-vline!(pl2, [10.0 ^ (-16/3)], label="h = epsilon")
-hline!(pl2, [10.0 ^ (-10.7)], label="Error")
+fig = Figure(size=(468, 350))
+ax = Axis(fig[1, 1],
+    xscale=log10, yscale=log10,
+    xlabel=L"h", ylabel="Relative Error",
+    title=L"Central Difference Approximation of $f(x) = e^{2x}$",
+    limits=(1e-15, 1e0, 1e-15, 1e0))
+vlines!(ax, [10.0 ^ (-16/3)], linewidth=2, linestyle=:dash, color=Makie.wong_colors()[2], label="h = epsilon")
+hlines!(ax, [10.0 ^ (-10.7)], linewidth=2, linestyle=:dash, color=Makie.wong_colors()[3], label="Error")
+lines!(ax, h_vals, fprime_central_diff_relative_errors, linewidth=2, color=Makie.wong_colors()[1], label="Relative Error")
+Legend(fig[2, 1], ax, framevisible=false, orientation=:horizontal)
 
-savefig(pl2, joinpath(@OUTPUT, "central_difference_error.png")) #hide
+save(joinpath(@OUTPUT, "central_difference_error.svg"), fig) #hide
 ```
 \fig{central_difference_error}
 

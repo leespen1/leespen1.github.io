@@ -302,6 +302,11 @@ td {
   padding-left: 10%;
 }
 
+.franklin-content img[src$=".svg"] {
+  width: 100%;
+  padding-left: 0;
+}
+
 .franklin-content .img-small img {
   width: 50%;
   text-align: center;
