@@ -1,0 +1,604 @@
+/* ==================================================================
+    VARIABLES
+================================================================== */
+
+:root {
+  --block-background: hsl(0, 0%, 94%);
+  --output-background: hsl(0, 0%, 98%);
+  --small: 14px;
+  --normal: 19px;
+  --text-color: hsv(0, 0%, 20%);
+}
+
+/* ==================================================================
+    DEFAULT FONT AND LAYOUT
+================================================================== */
+
+html {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-size: var(--normal);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6,
+#topnav {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+}
+
+/* ==================================================================
+    BASIC GRID FOR PROFILE PIC
+================================================================== */
+
+.franklin-content .row {
+  display: block;
+}
+
+.franklin-content .left {
+  float: left;
+  margin-right: 15px;
+}
+
+.franklin-content .right {
+  float: right;
+}
+
+.franklin-content .container img {
+  width: auto;
+  padding-left: 0;
+  border-radius: 10px;
+}
+
+.franklin-content .footnote {
+  position: relative;
+  top: -0.5em;
+  font-size: 70%;
+}
+
+/* ==================================================================
+    FOOT / COPYRIGHT
+================================================================== */
+
+.franklin-content .page-foot a {
+  text-decoration: none;
+  color: #a6a2a0;
+  text-decoration: underline;
+}
+
+.page-foot {
+  font-size: 80%;
+  font-family: Arial, serif;
+  color: #a6a2a0;
+  text-align: center;
+  margin-top: 6em;
+  border-top: 1px solid lightgrey;
+  padding-top: 2em;
+  margin-bottom: 4em;
+}
+
+/* ==================================================================
+    TEXT GEOMETRY
+================================================================== */
+
+.franklin-toc li {
+  /* Avoid clickable elements being too close together. */
+  margin: 0.6rem 0;
+}
+
+.franklin-content {
+  position: relative;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+  line-height: 1.35em;
+}
+
+/* On wide screens, fix content width to a max value. */
+@media (min-width: 940px) {
+  .franklin-content {
+    width: 705px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* On narrow device, reduce margins. */
+@media (max-width: 480px) {
+  .franklin-content {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+/* On narrow screens, stack the headshot above the text instead of floating. */
+@media (max-width: 480px) {
+  .franklin-content img[alt="Picture of Me"] {
+    float: none !important;
+    display: block;
+    margin: 0 auto 1em auto !important;
+    width: 50% !important;
+  }
+}
+
+/* ==================================================================
+    TITLES
+================================================================== */
+
+.franklin-content h1 { font-size: 28px; }
+.franklin-content h2 { font-size: 22px; }
+.franklin-content h3 { font-size: 20px; }
+
+.franklin-content h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: left;
+}
+
+.franklin-content h1 {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+.franklin-content h1.page-title {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 0.5em;
+}
+
+.franklin-content .post-date {
+  color: #888;
+  font-size: 0.9em;
+  margin-top: -0.5em;
+}
+
+.blog-date {
+  color: #888;
+}
+
+ul.blog-posts {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* SVG figures: size images so embedded text ≈ body text size */
+.svg-figure {
+  text-align: center;
+  overflow-x: auto;
+}
+
+.svg-figure img {
+  width: 100%;
+  padding-left: 0;
+}
+
+.franklin-content h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.franklin-content h1 a { color: inherit; }
+.franklin-content h1 a:hover { text-decoration: none; }
+.franklin-content h2 a { color: inherit; }
+.franklin-content h2 a:hover { text-decoration: none; }
+.franklin-content h3 a { color: inherit; }
+.franklin-content h3 a:hover { text-decoration: none; }
+.franklin-content h4 a { color: inherit; }
+.franklin-content h4 a:hover { text-decoration: none; }
+.franklin-content h5 a { color: inherit; }
+.franklin-content h5 a:hover { text-decoration: none; }
+.franklin-content h6 a { color: inherit; }
+.franklin-content h6 a:hover { text-decoration: none; }
+
+.franklin-content table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.franklin-toc ol ol {
+  list-style-type: lower-alpha;
+}
+
+.franklin-content th,
+.franklin-content td {
+  font-size: var(--normal);
+  padding: 10px;
+  border: none;
+}
+
+.franklin-content th {
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+.franklin-content blockquote {
+  background: var(--block-background);
+  border-left: 7px solid #a8a8a8;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  font-style: italic;
+}
+
+.franklin-content blockquote p {
+  display: inline;
+}
+
+/* ==================================================================
+    GENERAL FORMATTING
+================================================================== */
+
+/* Spacing between bullet points. */
+.franklin-content li p {
+  margin: 10px 0;
+}
+
+.franklin-content a {
+  color: #004de6;
+  text-decoration: none;
+}
+
+.franklin-content a:hover {
+  text-decoration: underline;
+}
+
+/* ==================================================================
+    HYPERREFS AND FOOTNOTES
+================================================================== */
+
+.franklin-content .eqref a { color: green; }
+.franklin-content .bibref a { color: green; }
+
+.franklin-content sup {
+  font-size: 70%;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.franklin-content table.fndef {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.franklin-content .fndef tr,
+td {
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.franklin-content .fndef tr {
+  border-left: 2px solid lightgray;
+}
+
+.franklin-content .fndef td.fndef-backref {
+  vertical-align: top;
+  font-size: 70%;
+  padding-left: 5px;
+}
+
+.franklin-content .fndef td.fndef-content {
+  font-size: 80%;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.franklin-content figcaption {
+  font-size: 85%;
+  color: #555;
+  margin-top: 0.4em;
+}
+
+/* ==================================================================
+    IMAGES in CONTENT
+================================================================== */
+
+.franklin-content img {
+  width: 70%;
+  text-align: center;
+  padding-left: 10%;
+}
+
+.franklin-content img[src$=".svg"] {
+  width: 100%;
+  padding-left: 0;
+}
+
+.franklin-content .img-small img {
+  width: 50%;
+  text-align: center;
+  padding-left: 20%;
+}
+
+/* ==================================================================
+    KATEX
+================================================================== */
+
+body { counter-reset: eqnum sidenote-counter; }
+
+.katex { font-size: 1em !important; }
+
+.katex-display .katex {
+  /* Overwrite KaTeX settings. */
+  display: inline-block;
+
+  /* Allow display equations to wrap on small screens. */
+  white-space: normal;
+}
+
+.katex-display::after {
+  counter-increment: eqnum;
+  content: "(" counter(eqnum) ")";
+  position: relative;
+  float: right;
+  padding-right: 5px;
+}
+
+.nonumber .katex-display::after {
+  counter-increment: nothing;
+  content: "";
+}
+
+/* ==================================================================
+    CODE & HIGHLIGHT.JS
+================================================================== */
+
+code {
+  background-color: var(--block-background);
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+  font-size: var(--small);
+}
+
+/* .franklin-content code { */
+
+/* background-color: rgba(27,31,35,0.05); */
+
+/* padding: 0.1em 0.2em; */
+
+/* border-radius: 2px; */
+
+/* font-size: 90%; } */
+
+.franklin-content pre {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.franklin-content pre .code-toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.franklin-content pre .code-label {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #999;
+}
+
+.franklin-content pre .copy-btn {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #666;
+  background: #eee;
+  border: none;
+  border-bottom-left-radius: 4px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.franklin-content pre .copy-btn:hover {
+  background: #ddd;
+  color: #333;
+}
+
+.hljs {
+  font-size: var(--small);
+  line-height: 1.35em;
+  border-radius: 6px;
+}
+
+.hljs-meta { font-weight: bold;}
+
+.hljs-meta.shell_ {color: crimson;}
+.hljs-meta.prompt_ {color: rgb(25, 179, 51);}
+
+.franklin-content pre:has(> .code-output) {
+  border: none;
+  border-radius: 0;
+}
+
+.code-output {
+  background: var(--output-background);
+  border: 1px dashed #dbdbdb;
+  padding-top: var(--small);
+}
+
+/* ==================================================================
+    BOXES
+================================================================== */
+
+.franklin-content .colbox-blue {
+  background-color: #eef3f5;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 0 10px 10px 0;
+  border-left: 5px solid #4c9cf1;
+}
+
+/* ==================================================================
+    TUFTE-STYLE SIDENOTES AND MARGIN NOTES
+================================================================== */
+
+.sidenote,
+.marginnote {
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+}
+
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+
+.sidenote-number::after,
+.sidenote::before {
+  font-size: 0.7rem;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.sidenote-number::after {
+  content: counter(sidenote-counter);
+  top: -0.5rem;
+  left: 0.1rem;
+}
+
+.sidenote::before {
+  content: counter(sidenote-counter) " ";
+  top: -0.5rem;
+}
+
+input.margin-toggle {
+  display: none;
+}
+
+label.sidenote-number {
+  display: inline-block;
+  cursor: default;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+  display: none;
+}
+
+/* ==================================================================
+    CV STYLES
+================================================================== */
+
+.cv-entry {
+  margin-bottom: 1.2em;
+}
+
+.cv-entry-header {
+  display: flex;
+  gap: 0.8em;
+  align-items: baseline;
+}
+
+.cv-dates {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  color: #555;
+  white-space: nowrap;
+  min-width: 6em;
+  flex-shrink: 0;
+}
+
+.cv-title {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.cv-entry-meta {
+  color: #555;
+  margin-left: 6.8em;
+  font-style: italic;
+}
+
+.cv-description {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  margin-left: 6.8em;
+}
+
+.cv-items {
+  margin-top: 0.3em;
+  margin-left: 6.8em;
+  padding-left: 1.2em;
+}
+
+.cv-items li {
+  margin-bottom: 0.3em;
+}
+
+.cv-bib-entry {
+  display: flex;
+  gap: 0.8em;
+  margin-bottom: 0.8em;
+  align-items: baseline;
+}
+
+.cv-bib-text {
+  flex: 1;
+}
+
+.cv-bib-entry a {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .cv-entry-header {
+    flex-direction: column;
+    gap: 0;
+  }
+  .cv-entry-meta,
+  .cv-description,
+  .cv-items {
+    margin-left: 0;
+  }
+  .cv-bib-entry {
+    flex-direction: column;
+    gap: 0.2em;
+  }
+}
+
+/* ==================================================================
+    TUFTE-STYLE SIDENOTES (continued)
+================================================================== */
+
+@media (max-width: 760px) {
+  label.margin-toggle:not(.sidenote-number) {
+    display: inline;
+    cursor: pointer;
+  }
+
+  .sidenote,
+  .marginnote {
+    display: none;
+  }
+
+  .margin-toggle:checked + .sidenote,
+  .margin-toggle:checked + .marginnote {
+    display: block;
+    float: left;
+    left: 1rem;
+    clear: both;
+    width: 95%;
+    margin: 1rem 2.5%;
+    vertical-align: baseline;
+    position: relative;
+  }
+}

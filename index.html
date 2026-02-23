@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+  
+  <link rel="stylesheet" href="/css/pure.css">
+<link rel="stylesheet" href="/css/side-menu.css">
+<link rel="stylesheet" href="/css/franklin.css">
+<!-- style adjustments -->
+<style>
+.franklin-content{padding-left:10%;}
+@media (min-width: 940px) {
+  .franklin-content {width: 705px; margin-left: auto; margin-right: auto;}
+}
+</style>
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Spencer Lee</title>  
+
+  <!-- SEO meta tags -->
+  <meta name="author" content="Spencer Lee">
+  
+  <meta name="description" content="Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control.">
+  
+  
+
+  <!-- Open Graph (social media link previews) -->
+  
+  <meta property="og:title" content="Spencer Lee">
+  
+  
+  
+  <meta property="og:description" content="Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control.">
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spencerlee.net//">
+  
+  <meta property="og:image" content="https://spencerlee.net/assets/FS21_Headshot_Cropped.jpg">
+  
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://spencerlee.net//">
+
+  <!-- JSON-LD structured data (homepage) -->
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Spencer Lee",
+    "url": "https://spencerlee.net/",
+    "image": "https://spencerlee.net/assets/FS21_Headshot_Cropped.jpg",
+    "jobTitle": "PhD Candidate in Computational Mathematics",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Michigan State University"
+    },
+    "knowsAbout": [
+      "Computational Mathematics",
+      "Quantum Optimal Control",
+      "Scientific Software",
+      "Numerical Methods",
+      "Quantum Computing",
+      "Julia Programming Language"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/spencer-lee-msu",
+      "https://github.com/leespen1",
+      "https://scholar.google.com/citations?user=ZC6ydb8AAAAJ",
+      "https://orcid.org/0000-0002-9262-4763",
+      "https://directory.natsci.msu.edu/directory/Profiles/Person/100941"
+    ]
+  }
+  </script>
+  
+
+  
+</head>
+<body>
+<div id="layout">
+  <nav id="topnav" class="pure-menu pure-menu-horizontal">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item "><a href="/CV/" class="pure-menu-link">Resume / CV</a></li>
+      <li class="pure-menu-item "><a href="/Software/" class="pure-menu-link">Software</a></li>
+      <li class="pure-menu-item "><a href="/BlogPosts/" class="pure-menu-link">Blog</a></li>
+      <li class="pure-menu-item "><a href="/Contact/" class="pure-menu-link">Contact</a></li>
+      <li class="pure-menu-item" id="search-menu-item">
+        <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+          <input class="search-input" name="q" placeholder="Search..." type="text">
+        </form>
+      </li>
+    </ul>
+  </nav>
+  <div id="main" role="main"> <!-- Closed in foot -->
+    <div class="header">
+      <h1>Spencer Lee</h1>
+      <h2>Computational Mathematics<br>Scientific Software<br>Quantum Optimal Control</h2>
+    </div>
+    
+
+
+<!-- Content appended here -->
+<div class="franklin-content">
+<h1 id="about_me"><a href="#about_me" class="header-anchor">About Me</a></h1>
+<p>
+<img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Me"
+style="float: right; width: 180px; margin: 0 0 1em 1.5em; border-radius: 8px; padding: 0;">
+ I develop high-performance numerical methods and scientific software for quantum optimal control and other cutting-edge scientific problems. I am a PhD candidate in Computational Mathematics, Science, and Engineering at Michigan State University, and I am the developer of the open-source Julia package <a href="https://github.com/leespen1/QuantumGateDesign.jl"><strong>QuantumGateDesign.jl</strong></a>, which quickly solves quantum optimal control problems using a novel, high-order numerical method based on Hermite interpolation. You can read about the method in our  <a href="https://doi.org/10.1016/j.jcp.2026.114697"><strong>publication in Journal of Computational Physics</strong></a> &#40;or in the  <a href="https://arxiv.org/abs/2505.09857">arXiv preprint</a>&#41;.</p>
+<p>I am looking for a job after I graduate&#33; If you are looking for someone with experience in writing high-performance software for physics simulations, especially for quantum optimal control, please email me at <a href="mailto:leespen1@msu.edu">leespen1@msu.edu</a>, or contact me  <a href="https://www.linkedin.com/in/spencer-lee-msu">on LinkedIn</a>.</p>
+<h1 id="about_quantum_optimal_control"><a href="#about_quantum_optimal_control" class="header-anchor">About Quantum Optimal Control</a></h1>
+<p>In quantum computing, algorithms are often written as <em>quantum circuits</em>. The following quantum circuit takes two qubits in the ground state &#40;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span>&#41; as inputs, and outputs the maximally entangled Bell state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>00</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>11</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">(|00\rangle + |11\rangle)/\sqrt{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">∣00</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em;"></span><span class="mord">∣11</span><span class="mclose">⟩)</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span>.</p>
+
+<figure style="text-align:center;">
+  <img src="/assets/img/BellStateCircuit.svg" width="400">
+  <figcaption>Bell state preparation circuit.</figcaption>
+</figure>
+
+<p>The squares and circles in the diagram are <em>quantum logic gates</em>, which are the building blocks of quantum algorithms. The behavior of a quantum logic gate is defined by how it affects the possible inputs of the gate. For example, the Hadamard gate is defined by the following input-output maps in the following table.</p>
+<table><tr><th align="right">Input State</th><th align="right">Output State</th></tr><tr><td align="right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\vert 0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span></td><td align="right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">(\vert 0\rangle + \vert 1\rangle)/\sqrt{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩)</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span></td></tr><tr><td align="right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\vert 1\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span></span></span></span></td><td align="right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>−</mo><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">(\vert 0\rangle - \vert 1\rangle)/\sqrt{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩)</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span></td></tr></table>
+<p>Quantum circuit diagrams abstract away the physics and engineering work required to implement a quantum algorithm using real hardware. It is assumed that we can do operations like &quot;apply a Hadamard gate to qubit 1&quot;, or &quot;apply a CNOT gate on qubits 1 and 2.&quot;</p>
+<p>To implement a quantum logic gate on real quantum computing hardware,  we control the amplitude of electromagnetic pulses to manipulate the quantum system. This is called <em>pulse-shaping</em>, since we control the &quot;shape&quot; of the pulse when plotting amplitude vs time.</p>
+<p>For example, consider a qubit whose Hamiltonian is</p>
+<div class="nonumber"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msub><mi>ω</mi><mn>0</mn></msub><mn>2</mn></mfrac><msub><mi>σ</mi><mi>z</mi></msub><mo>+</mo><mi>c</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mi>σ</mi><mi>x</mi></msub><mo separator="true">,</mo><mspace width="1em"/><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><mn>0.1</mn><mtext>GHz</mtext><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">
+H(t) = \frac{\omega_0}{2}\sigma_z + c(t)\sigma_x,
+\quad \omega_0 =
+0.1 \textrm{GHz},
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.7936em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0.1</span><span class="mord text"><span class="mord textrm">GHz</span></span><span class="mpunct">,</span></span></span></span></span></div>
+<p>where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span> is the amplitude of an electromagnetic pulse which we control. <label for="sn-sn:hadamard_example_hamiltonian" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:hadamard_example_hamiltonian" class="margin-toggle"/><span class="sidenote">In the computational basis, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">|0\rangle = \begin{bmatrix}1 \\ 0 \end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">|1\rangle = \begin{bmatrix}0 \\ 1 \end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span>, the matrix forms of the operators are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>z</mi></msub><mo>≡</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>1</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mo separator="true">,</mo><mspace width="1em"/><msub><mi>σ</mi><mi>x</mi></msub><mo>≡</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\sigma_z \equiv \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}, \quad \sigma_x \equiv \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6138em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span>.</span> Using numerical simulation and optimization, I found that the following control pulse implements a Hadamard gate very accurately. 
+<figure class="svg-figure">
+  <img src="/assets/img/hadamard_pulse_example_vertical.svg" style="width: 100% !important; padding-left: 0 !important;">
+  <figcaption>Control pulse implementing a Hadamard gate.</figcaption>
+</figure>
+</p>
+<p>We can also design multi-qubit gates, like a Controlled NOT gate.<label for="sn-sn:cnot_note" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:cnot_note" class="margin-toggle"/><span class="sidenote">This is represented by the dot and circle in the same column in the Bell state preparation circuit diagram.</span> For each qubit we add, the size of the numerical representation of the system doubles, which makes simulating the  system more computationally expensive. In addition, depending on the Hamiltonian of a given quantum system, the system may have very &quot;fast&quot; dynamics which are computationally expensive to simulate. Moreover, the parameters of an individual quantum system tend to drift over time, so that the control pulses must be recalibrated on a regular basis</p>
+<p>My work focuses on novel methods to accelerate the simulation of the quantum system &#40;while still keeping some properties which are necessary for efficiently optimizing the pulse shape&#41; so that we can efficiently design and recalibrate pulse shapes to implement accurate, multi-qubit gates.</p>
+<h1 id="quote_of_the_day"><a href="#quote_of_the_day" class="header-anchor">Quote of the Day</a></h1>
+
+<blockquote id="quote-of-the-day"></blockquote>
+<script>
+var quotes = [
+  {text: "Be it known that, waiving all argument, I take the good old fashioned ground that the whale is a fish.", author: "Herman Melville", source: "Moby Dick"},
+  {text: "In mathematics you don't understand things. You just get used to them.", author: "John von Neumann"},
+  {text: "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem.", author: "John Tukey"}
+];
+var today = new Date();
+var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+var q = quotes[dayOfYear % quotes.length];
+var el = document.getElementById("quote-of-the-day");
+var src = q.source ? ", <i>" + q.source + "</i>" : "";
+el.innerHTML = '<p>"' + q.text + '"</p><footer>— <cite>' + q.author + src + '</cite></footer>';
+</script>
+
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Spencer Lee. Last modified: February 22, 2026.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+      </div> <!-- end of id=main -->
+  </div> <!-- end of id=layout -->
+  
+      
+
+
+
+  
+  
+</body>
+</html>
