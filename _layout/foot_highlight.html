@@ -1,2 +1,28 @@
 <script src="/libs/highlight/highlight.min.js"></script>
 <script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+<script>
+document.querySelectorAll('.franklin-content pre code.language-julia').forEach(function(block) {
+  var pre = block.parentElement;
+
+  var toolbar = document.createElement('div');
+  toolbar.className = 'code-toolbar';
+
+  var label = document.createElement('span');
+  label.className = 'code-label';
+  label.textContent = 'Julia';
+
+  var btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.textContent = 'Copy';
+  btn.addEventListener('click', function() {
+    navigator.clipboard.writeText(block.textContent).then(function() {
+      btn.textContent = 'Copied!';
+      setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+    });
+  });
+
+  toolbar.appendChild(label);
+  toolbar.appendChild(btn);
+  pre.appendChild(toolbar);
+});
+</script>

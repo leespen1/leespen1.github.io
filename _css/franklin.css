@@ -363,10 +363,50 @@ code {
 
 /* font-size: 90%; } */
 
+.franklin-content pre {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.franklin-content pre .code-toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.franklin-content pre .code-label {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #999;
+}
+
+.franklin-content pre .copy-btn {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #666;
+  background: #eee;
+  border: none;
+  border-bottom-left-radius: 4px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.franklin-content pre .copy-btn:hover {
+  background: #ddd;
+  color: #333;
+}
+
 .hljs {
   font-size: var(--small);
   line-height: 1.35em;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .hljs-meta { font-weight: bold;}
@@ -374,9 +414,15 @@ code {
 .hljs-meta.shell_ {color: crimson;}
 .hljs-meta.prompt_ {color: rgb(25, 179, 51);}
 
+.franklin-content pre:has(> .code-output) {
+  border: none;
+  border-radius: 0;
+}
+
 .code-output {
   background: var(--output-background);
   border: 1px dashed #dbdbdb;
+  padding-top: var(--small);
 }
 
 /* ==================================================================
