@@ -12,6 +12,9 @@ if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --o
   exit 1
 fi
 
+# Install Node.js dependencies (lunr, cheerio) if needed
+npm install
+
 # Build the site using Franklin.jl
 echo "Building the website..."
 julia -e 'using Franklin; verify_links(); optimize(); lunr(); verify_links()'
