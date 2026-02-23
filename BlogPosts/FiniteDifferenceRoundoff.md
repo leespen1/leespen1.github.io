@@ -200,7 +200,6 @@ compared to the analytic solution.
 
 ```julia:myplot1
 using Plots
-pgfplotsx()
 using LaTeXStrings
 
 f(x) = exp(2*x)
