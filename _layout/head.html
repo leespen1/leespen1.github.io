@@ -34,13 +34,13 @@
   <meta property="og:description" content="{{fill website_descr}}">
   {{end}}
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{fill website_url}}{{fill fd_url}}">
+  <meta property="og:url" content="{{canonical_url}}">
   {{isdef image}}
   <meta property="og:image" content="{{fill website_url}}{{fill image}}">
   {{end}}
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="{{fill website_url}}{{fill fd_url}}">
+  <link rel="canonical" href="{{canonical_url}}">
 
   <!-- JSON-LD structured data (homepage) -->
   {{ispage index.html}}
