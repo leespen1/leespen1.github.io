@@ -14,14 +14,14 @@
       high-order time steps and second-order optimization.
     - >-
       Derived discrete adjoint equations for high-order Hermite methods applied
-      to Schr\"odinger's equation, enabling fast and exact gradient computations
+      to Schrödinger's equation, enabling fast and exact gradient computations
       for quantum optimal control.
     - >-
       Investigated using Filon methods to efficiently integrate high-frequency
-      systems of ODEs, e.g. Schr\"odinger's equation for superconducting qubits.
+      systems of ODEs, e.g. Schrödinger's equation for superconducting qubits.
     - >-
       Researched using neural ODEs to learn computationally cheap Magnus expansion
-      solutions to Schr\"odinger's equation for accelerated simulation of quantum
+      solutions to Schrödinger's equation for accelerated simulation of quantum
       systems under external control.
 
 - dates: "2023, 2025"
@@ -60,7 +60,7 @@
       Accelerated simulation of runaway electrons in Tokamak fusion reactors
       using CUDA-enabled GPUs.
     - >-
-      Visualized electron behavior using Poincar\'{e} plots to identify
+      Visualized electron behavior using Poincaré plots to identify
       computationally challenging regions of the reactor.
 
 - dates: "2022"
@@ -74,7 +74,7 @@
     - >-
       Demonstrated by numerical experiments that high-order methods accurately
       simulate the physics of relevant 2-qubit systems at one-tenth the
-      computational cost of second-order St\"ormer-Verlet.
+      computational cost of second-order Störmer-Verlet.
     - >-
       Achieved similar results using the implicit midpoint rule, a more
       stable alternative, as the base method.
