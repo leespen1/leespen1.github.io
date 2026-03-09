@@ -1,5 +1,6 @@
 +++
-title = "Spencer Lee"
+title = "Spencer Lee — Computational Mathematics & Quantum Control"
+page_title = "Spencer Lee"
 tags = ["syntax", "code"]
 commonmark_safe = false
 description = "Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control."

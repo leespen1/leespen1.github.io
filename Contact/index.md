@@ -1,6 +1,7 @@
 +++
-title = "Contact"
-description = "Contact information for Spencer Lee — email, LinkedIn, OrcID, and Google Scholar."
+title = "Contact — Spencer Lee | Computational Mathematics"
+page_title = "Contact"
+description = "Get in touch with Spencer Lee — find contact details including email, LinkedIn, OrcID, Google Scholar, and other academic profiles for collaboration inquiries."
 tags = ["contact"]
 +++
 

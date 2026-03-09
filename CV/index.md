@@ -1,6 +1,7 @@
 +++
-title = "Resume / CV"
-description = "Spencer Lee's academic CV — experience, publications, talks, awards, and education in computational mathematics."
+title = "Resume / CV — Spencer Lee | Computational Mathematics"
+page_title = "Resume / CV"
+description = "Spencer Lee's academic CV — research experience, publications, conference talks, awards, and education in computational mathematics at Michigan State University."
 tags = ["CV", "resume"]
 +++
 

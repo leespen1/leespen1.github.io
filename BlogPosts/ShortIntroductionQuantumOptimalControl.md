@@ -2,7 +2,7 @@
 title = "A Short Introduction to Quantum Optimal Control"
 date = Date(2025, 7, 17)
 tags = ["quantum", "optimal", "control", "GRAPE", "CRAB", "pulse", "quantum computing", "scientific computing", "optimization"]
-description = "An accessible introduction to quantum optimal control, including GRAPE and CRAB methods, with downloadable PDF handout."
+description = "An accessible introduction to quantum optimal control theory, covering GRAPE and CRAB optimization methods for quantum gate design, with a downloadable PDF handout."
 +++
 
 As part of a working group during the Institute for Pure and Applied Mathematics' 

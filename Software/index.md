@@ -1,6 +1,7 @@
 +++
-title = "Software"
-description = "Open-source software by Spencer Lee, including QuantumGateDesign.jl for quantum optimal control."
+title = "Software — Spencer Lee | Open-Source Scientific Computing"
+page_title = "Software"
+description = "Open-source scientific software by Spencer Lee, including QuantumGateDesign.jl — a Julia package for quantum optimal control and gate design optimization."
 tags = ["software", "Julia", "quantum"]
 +++
 
