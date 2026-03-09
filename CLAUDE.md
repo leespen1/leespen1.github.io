@@ -46,7 +46,3 @@ tags = ["tag1", "tag2"]
 ```
 
 The blog index (`BlogPosts/index.md`) uses `{{blogposts}}` to call `hfun_blogposts()` in `utils.jl`, which auto-discovers and lists all posts sorted by date (newest first). Adding a new `.md` file to `BlogPosts/` with proper front matter is all that's needed.
-
-## Note
-
-`config.md` line 20 has a typo: `website_title = "Spencer Lee's WebsiteF"` (trailing "F").
