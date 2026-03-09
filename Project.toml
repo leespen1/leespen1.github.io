@@ -1,0 +1,6 @@
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
+NodeJS = "2bd173c7-0d6d-553b-b6af-13a54713934c"
+Quadmath = "be4d8f0f-7fa4-5f49-b795-2f01399ab2dd"
+YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
