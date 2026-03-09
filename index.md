@@ -9,8 +9,8 @@ image = "assets/FS21_Headshot_Cropped.jpg"
 # About Me
 
 ~~~
-<img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Me"
-style="float: right; width: 180px; margin: 0 0 1em 1.5em; border-radius: 8px; padding: 0;">
+<img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Spencer Lee, PhD candidate in computational mathematics, science, and engineering at Michigan State University."
+style="float: right; width: 160px; margin: 0 0 1em 1.5em; border-radius: 8px; padding: 0;">
 ~~~
 I develop high-performance numerical methods and scientific software for quantum
 optimal control and other cutting-edge scientific problems. I am a PhD candidate
