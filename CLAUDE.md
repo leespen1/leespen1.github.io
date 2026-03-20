@@ -46,3 +46,15 @@ tags = ["tag1", "tag2"]
 ```
 
 The blog index (`BlogPosts/index.md`) uses `{{blogposts}}` to call `hfun_blogposts()` in `utils.jl`, which auto-discovers and lists all posts sorted by date (newest first). Adding a new `.md` file to `BlogPosts/` with proper front matter is all that's needed.
+
+## Equation Numbering
+
+Do **not** use KaTeX `\tag{n}` for equation numbers — on wide equations the tag renders inside the equation box and overlaps with the content. Instead, use the `\eqnumber{...}` Franklin command (defined in `config.md`) to wrap the `$$...$$` block. This applies a CSS counter via `.numbered-eq .katex-display::after` in `_css/franklin.css`, which positions the number outside the equation with `float: right`.
+
+- **Numbered equation:** `\eqnumber{$$x = y$$}` — gets a sequential CSS counter number.
+- **Unnumbered equation:** plain `$$x = y$$` — no number.
+- Numbers are sequential across all `\eqnumber` uses on a page, so text references like "in (3)" must match the order of `\eqnumber` appearances.
+
+## Sidenotes & Firefox Reader View
+
+Sidenotes use Tufte-style CSS (superscript number, margin float). In Firefox Reader View, CSS is stripped, which causes sidenote text to concatenate with surrounding text. The fix: wrap sidenote content with `<span class="sidenote-delimiter"> [</span>` and `<span class="sidenote-delimiter">] </span>` delimiters (defined in `config.md` macros). These are hidden via `display: none` in `_css/franklin.css` during normal rendering, but become visible as `[bracketed text]` in Reader View, keeping sidenotes separated from body text. Do not use `<aside>` for sidenotes — it is block-level and breaks paragraph flow.

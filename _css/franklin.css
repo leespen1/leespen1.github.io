@@ -329,7 +329,7 @@ body { counter-reset: eqnum sidenote-counter; }
   white-space: normal;
 }
 
-.katex-display::after {
+.numbered-eq .katex-display::after {
   counter-increment: eqnum;
   content: "(" counter(eqnum) ")";
   position: relative;
@@ -483,6 +483,10 @@ code {
 }
 
 input.margin-toggle {
+  display: none;
+}
+
+.sidenote-delimiter {
   display: none;
 }
 
