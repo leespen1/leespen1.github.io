@@ -4,13 +4,13 @@ page_title = "Spencer Lee"
 tags = ["syntax", "code"]
 commonmark_safe = false
 description = "Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control."
-image = "assets/FS21_Headshot_Cropped.jpg"
+image = "assets/HeadshotMay2026Cropped.jpg"
 +++
 
 # About Me
 
 ~~~
-<img src="/assets/FS21_Headshot_Cropped.jpg" alt="Picture of Spencer Lee, PhD candidate in computational mathematics, science, and engineering at Michigan State University."
+<img src="/assets/HeadshotMay2026Cropped.jpg" alt="Picture of Spencer Lee, PhD candidate in computational mathematics, science, and engineering at Michigan State University."
 style="float: right; width: 160px; margin: 0 0 1em 1.5em; border-radius: 8px; padding: 0;">
 ~~~
 I develop high-performance numerical methods and scientific software for quantum
