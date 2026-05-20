@@ -106,7 +106,8 @@ var quotes = [
   {text: "Be it known that, waiving all argument, I take the good old fashioned ground that the whale is a fish.", author: "Herman Melville", source: "Moby Dick"},
   {text: "In mathematics you don't understand things. You just get used to them.", author: "John von Neumann"},
   {text: "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem.", author: "John Tukey"},
-  {text: "The way you make code last a long time is you minimize dependencies that are likely to change and, to the extent you must take such dependencies, you minimize the contact surface between your program and those dependencies.", author: "Johnathan Blow"}
+  {text: "The way you make code last a long time is you minimize dependencies that are likely to change and, to the extent you must take such dependencies, you minimize the contact surface between your program and those dependencies.", author: "Johnathan Blow"},
+  {text: "As machines become more powerful, the efficiency of algorithms grows more important, not less.", author: "Nick Trefethen"}
 ];
 var today = new Date();
 var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
