@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+  
+  <link rel="stylesheet" href="/css/pure.css">
+<link rel="stylesheet" href="/css/side-menu.css">
+<link rel="stylesheet" href="/css/franklin.css">
+<!-- style adjustments -->
+<style>
+.franklin-content{padding-left:10%;}
+@media (min-width: 940px) {
+  .franklin-content {width: 705px; margin-left: auto; margin-right: auto;}
+}
+</style>
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>A Short Introduction to Quantum Optimal Control</title>  
+
+  <!-- SEO meta tags -->
+  <meta name="author" content="Spencer Lee">
+  
+  <meta name="description" content="An accessible introduction to quantum optimal control theory, covering GRAPE and CRAB optimization methods for quantum gate design, with a downloadable PDF handout.">
+  
+  
+
+  <!-- Open Graph (social media link previews) -->
+  
+  <meta property="og:title" content="A Short Introduction to Quantum Optimal Control">
+  
+  
+  
+  <meta property="og:description" content="An accessible introduction to quantum optimal control theory, covering GRAPE and CRAB optimization methods for quantum gate design, with a downloadable PDF handout.">
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spencerlee.net//BlogPosts/ShortIntroductionQuantumOptimalControl/">
+  
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://spencerlee.net//BlogPosts/ShortIntroductionQuantumOptimalControl/">
+
+  <!-- JSON-LD structured data (homepage) -->
+  
+
+  
+</head>
+<body>
+<div id="layout">
+  <nav id="topnav" class="pure-menu pure-menu-horizontal">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item "><a href="/" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item "><a href="/CV/" class="pure-menu-link">Resume / CV</a></li>
+      <li class="pure-menu-item "><a href="/Software/" class="pure-menu-link">Software</a></li>
+      <li class="pure-menu-item pure-menu-selected"><a href="/BlogPosts/" class="pure-menu-link">Blog</a></li>
+      <li class="pure-menu-item "><a href="/Contact/" class="pure-menu-link">Contact</a></li>
+      <li class="pure-menu-item" id="search-menu-item">
+        <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+          <input class="search-input" name="q" placeholder="Search..." type="text">
+        </form>
+      </li>
+    </ul>
+  </nav>
+  <article id="main" role="main"> <!-- Closed in foot -->
+    
+    <div class="franklin-content"><h1 class="page-title">A Short Introduction to Quantum Optimal Control</h1><p class="post-date">2025-07-17</p></div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content">
+<p>This handout was written to accompany a talk I gave during the Institute for Pure and Applied Mathematics&#39; <a href="https://www.ipam.ucla.edu/programs/long-programs/non-commutative-optimal-transport/">long workshop on non-commutative optimal transport</a>. You can <a href="/assets/pdf/Short_Introduction_To_Quantum_Optimal_Control.pdf">download the original PDF handout</a>, or read the HTML version below.</p>
+<h2 id="abstract"><a href="#abstract" class="header-anchor">Abstract</a></h2>
+<p><em>We first give a short definition of quantum states and operators, and explain how quantum states evolve in time. We then explain what quantum optimal control is and how to frame it as a nonlinear programming &#40;optimization&#41; problem which can be solved computationally. Finally, we explain the GRAPE technique. Some simplifications have been made to keep this accessible –- for example, real hardware implementations of qubits are often infinite-level systems, but we treat them here as two-level systems.</em></p>
+<h2 id="quantum_computing"><a href="#quantum_computing" class="header-anchor">Quantum Computing</a></h2>
+<p>The state of a closed quantum system can be represented by a complex-valued state vector \(\boldsymbol{\psi} \in \mathbb{C}^N\). Each observable<label for="sn-sn:observable" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:observable" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>A quantity that can be physically measured.<span class="sidenote-delimiter">] </span></span> of the system is associated with a Hermitian matrix \(O \in \mathbb{C}^{N \times N}\). The eigenvalues of the operator are the possible outcomes of the measurement<label for="sn-sn:hermitian" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:hermitian" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Because the matrix is Hermitian, the eigenvalues are real, which makes sense because the eigenvalues are physically measurable quantities.<span class="sidenote-delimiter">] </span></span>, and the corresponding eigenvectors are the states for which that measurement will be observed. We may write the state vector in terms of the orthonormal eigenvectors of \(O\):</p>
+\[\boldsymbol{\psi} = c_1 \boldsymbol{\psi}_1 + c_2 \boldsymbol{\psi}_2 + \dots + c_N \boldsymbol{\psi}_N.\]
+<p>Then \(|c_i|^2\) gives the probability of observing the state \(\boldsymbol{\psi}_i\) when the system is measured, upon which the system is said to <em>collapse</em> to the measured state. For this reason, the coefficients \(\{c_i\}\) are called <em>probability amplitudes</em>. Consequently, the length of the state vector is \(\| \boldsymbol{\psi} \|_2^2 = 1\) at all times because the probabilities of observing each possible outcome must sum to one. This also implies that the time evolution of the state vector is unitary, since unitary matrices preserve length.</p>
+<p>In the quantum computing literature, states are often represented using bra-ket notation, where we may denote a state by \(|\psi\rangle\). The state \(\boldsymbol{\psi} \in \mathbb{C}^N\) represents \(|\psi\rangle\) in a particular measurement basis. Similarly, a matrix \(O\) represents the <em>operator</em> \(\hat{O}\) in a particular basis. In other words, \(|\psi\rangle\) is just a way of labeling a physical state, whereas a corresponding state vector \(\boldsymbol{\psi} \in \mathbb{C}^N\) gives information on the outcomes of measuring the system. We switch between the two notations when convenient, but mostly stick to representing states as complex-valued vectors.<label for="sn-sn:braket" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:braket" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>\(|\boldsymbol{\psi}\rangle\) is called a <em>ket</em>, and \(\langle\boldsymbol{\psi}| \sim \boldsymbol{\psi}^\dagger\) is called a <em>bra</em>. Cutely, the <em>bracket</em> \(\langle\psi_\alpha|\psi_\beta\rangle = \boldsymbol{\psi}_\alpha^\dagger \boldsymbol{\psi}_\beta\) represents an inner product. Many by-hand calculations can be simplified using inner products and orthonormality of eigenvectors, so this notation can be convenient when working with pen and paper.<span class="sidenote-delimiter">] </span></span></p>
+<p>In this work, we only consider closed quantum systems. In a quantum computing context, this means considering only time scales short enough that there is no significant interaction between the quantum computer and the environment. Open quantum systems, which model the interaction between the quantum computer and the environment, are much larger and more computationally challenging, but the algorithms for performing quantum optimal control on them are essentially the same as for closed quantum systems.</p>
+<h2 id="governing_equation_schrödingers_equation"><a href="#governing_equation_schrödingers_equation" class="header-anchor">Governing Equation: Schrödinger&#39;s Equation</a></h2>
+<p>The time evolution of the state vector from an initial state \(\boldsymbol{\psi}_0\) in a closed quantum system is governed by Schrödinger&#39;s equation<label for="sn-sn:hbar" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:hbar" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>We always choose our units so that \(\hbar=1\).<span class="sidenote-delimiter">] </span></span></p>
+<div class="numbered-eq"></p>
+\[\frac{d}{dt}\boldsymbol{\psi}(t) = -iH(t)\boldsymbol{\psi}(t),\quad \boldsymbol{\psi}(0) = \boldsymbol{\psi}_0 \in \mathbb{C}^N.\]
+<p></div>
+<p>where \(H(t) \in \mathbb{C}^{N \times N}\) is the Hamiltonian of the system, the matrix corresponding<label for="sn-sn:observable-sense" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:observable-sense" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>In the sense of observables, described in the previous section.<span class="sidenote-delimiter">] </span></span> to the measurement of the total energy of a system.<label for="sn-sn:schrodinger-motivation" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:schrodinger-motivation" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Schrödinger&#39;s equation is a postulate of quantum mechanics. It cannot be derived, but the idea that the dynamics of a quantum system are determined by the linear operator corresponding to the energy of the system can be classically motivated; in Hamiltonian mechanics, the dynamics of a classical system are determined by the Hamiltonian function of the system, which usually gives the total energy of the system.<span class="sidenote-delimiter">] </span></span></p>
+<p>In most quantum computing hardware, the Hamiltonian takes the form:</p>
+<div class="numbered-eq"></p>
+\[H(t) = H_d + f_1(t)H_{c,1} + f_2(t)H_{c,2} + \dots + f_{N_c}(t)H_{c,N_c}.\]
+<p></div>
+<p>\(H_d\) is called the <em>drift Hamiltonian</em>, because even when the functions \(f_1,\dots,f_{N_c}\) are all zero, the state vector still <em>drifts</em> because of the dynamics caused by \(H_d\).<label for="sn-sn:system-hamiltonian" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:system-hamiltonian" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>The term <em>system Hamiltonian</em> is also used to describe \(H_d\).<span class="sidenote-delimiter">] </span></span> \(H_{c,1},\dots,H_{c,N_c}\) are called the <em>control Hamiltonians</em>, because in a quantum computer the <em>control functions</em> \(f_1,\dots,f_{N_c}\) correspond to the amplitude of laser pulses &#40;or something similar&#41; which we can program in order to <em>control</em> the dynamics of the system.</p>
+<h2 id="defining_the_quantum_optimal_control_problem"><a href="#defining_the_quantum_optimal_control_problem" class="header-anchor">Defining the Quantum Optimal Control Problem</a></h2>
+<p>Quantum optimal control refers to the process of manipulating the Hamiltonian in &#40;1, 2&#41; to implement some desired behavior. The two most common types of quantum optimal control problems are state transfer problems and gate design problems.</p>
+<h3 id="state_preparation_problems"><a href="#state_preparation_problems" class="header-anchor">State Preparation Problems</a></h3>
+<p>In a state preparation problem, we start from some known quantum state \(\boldsymbol{\psi}_0\) which can easily be prepared on a quantum computer.<label for="sn-sn:ground-state" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:ground-state" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Usually, the initial state is the ground state of the quantum computer, which the quantum computer naturally relaxes to over time.<span class="sidenote-delimiter">] </span></span> We want to <em>transfer</em> the state to some desired state \(\boldsymbol{\psi}_{\textrm{Target}}\) over some period of time \(0 \leq t \leq T\). Because the Hamiltonian controls the dynamics of the system, we do this by searching for a Hamiltonian which causes the desired dynamics.</p>
+<p>In order to quantify the &quot;closeness&quot; of two quantum states, we use the <em>fidelity</em> between the two states:</p>
+<div class="numbered-eq"></p>
+\[F(\psi_\alpha, \psi_\beta) = |\langle\psi_\alpha|\psi_\beta\rangle|^2 = |\boldsymbol{\psi}_\alpha^\dagger \boldsymbol{\psi}_\beta|^2 = F(\boldsymbol{\psi}_\alpha, \boldsymbol{\psi}_\beta).\]
+<p></div>
+<p>The fidelity has several properties which make it a good way to quantify the &quot;closeness&quot; of two quantum states.</p>
+<ol>
+<li><p>The fidelity between two states \(F(\psi_\alpha, \psi_\beta)\) is \(1\) when \(\psi_\alpha = \psi_\beta\), and \(0\) when the two states are orthogonal.</p>
+</li>
+<li><p>The fidelity does not depend on the <em>global phase</em> of the states. That is, \(F(e^{i\delta_\alpha}\boldsymbol{\psi}_\alpha, e^{i\delta_\beta}\boldsymbol{\psi}_\beta) = F(\boldsymbol{\psi}_\alpha, \boldsymbol{\psi}_\beta)\) for all \(\delta_\alpha, \delta_\beta \in \mathbb{R}\). This is physically significant because the global phase of a state cannot be measured.<label for="sn-sn:global-phase" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:global-phase" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>This means that the states \(\sqrt{2}^{-1}(\boldsymbol{\psi}_0+\boldsymbol{\psi}_1)\) and \(e^{i\delta}\sqrt{2}^{-1}(\boldsymbol{\psi}_0+\boldsymbol{\psi}_1)\) are indistinguishable. However, we can measure a <em>relative</em> phase, so the states \(\sqrt{2}^{-1}(\boldsymbol{\psi}_0+\boldsymbol{\psi}_1)\) and \(\sqrt{2}^{-1}(\boldsymbol{\psi}_0+e^{i\delta}\boldsymbol{\psi}_1)\)<em>are</em> distinguishable, although their probability amplitudes have the same magnitude.<span class="sidenote-delimiter">] </span></span></p>
+</li>
+</ol>
+<p>Then we can write our optimal control problem as</p>
+\[\underset{f_1,\dots,f_{N_c}}{\operatorname{minimize}}\ \  1 - |\boldsymbol{\psi}_{\textrm{Target}}^\dagger \boldsymbol{\psi}(T)|^2,\]
+\[\textrm{where}\ \ \frac{d}{dt}\boldsymbol{\psi}(t) = -i\left(H_d + \sum_{n=1}^{N_c} f_n(t)H_{c,n}\right)\boldsymbol{\psi}(t),\quad \boldsymbol{\psi}(0) = \boldsymbol{\psi}_0 \in \mathbb{C}^N.\]
+<p>We are trying to find control functions \(\{f_i\}\) which implement a Hamiltonian which minimizes the <em>infidelity</em> between the initial state and the target state.</p>
+<p>I have no idea how to solve this optimization problem computationally, since I have no idea how to program a computer to search over the spaces of arbitrary functions \(f: \mathbb{R} \rightarrow \mathbb{R}\).<label for="sn-sn:function-search" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:function-search" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>If you know how to do this, please let me know&#33;<span class="sidenote-delimiter">] </span></span> And analytic solutions are only known for a select few problems that involve very small quantum systems. To solve the optimization problem computationally, we introduce the control vector \(\boldsymbol{\theta} \in \mathbb{R}^{n_c \cdot N_c}\) to parameterize the control functions. Each control function is a linear combination<label for="sn-sn:linear-dependence" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:linear-dependence" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>In principle, the dependence may be nonlinear, but using a linear dependence keeps the parameterization of the control functions simple. A linear dependence is also computationally useful because it makes taking the gradient of the control functions trivial.<span class="sidenote-delimiter">] </span></span> of \(n_c\) basis functions.<label for="sn-sn:same-basis" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:same-basis" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>In principle, the number of basis functions can be different for each control function, but keeping the number the same makes it easier to write.<span class="sidenote-delimiter">] </span></span> For notational convenience, we can write the control vector in matrix form as \(\Theta \in \mathbb{R}^{n_c \cdot N_c}\), with \(\Theta_{j,k} = \boldsymbol{\theta}_{(j-1)n_c + k}\).</p>
+<div class="numbered-eq"></p>
+\[f_j(t;\boldsymbol{\theta}) = \sum_{k=1}^{n_c} \Theta_{j,k} b_{j,k}(t), \quad j = 1,\dots,N_c.\]
+<p></div>
+<p>The choice of the basis functions \(\{b_{j,k}\}\) is called the <em>control pulse ansatz</em>.</p>
+<p>We can finally write our optimization problem as</p>
+<div class="numbered-eq"></p>
+\[\underset{\boldsymbol{\theta}}{\operatorname{minimize}}\ \  1 - |\boldsymbol{\psi}_{\textrm{Target}}^\dagger \boldsymbol{\psi}(T)|^2,\]
+<p></div>
+\[\textrm{where}\ \ \frac{d}{dt}\boldsymbol{\psi}(t) = -i\left(H_d + \sum_{n=1}^{N_c} f_n(t;\boldsymbol{\theta})H_{c,n}\right)\boldsymbol{\psi}(t),\quad \boldsymbol{\psi}(0) = \boldsymbol{\psi}_0 \in \mathbb{C}^N.\]
+<p><label for="sn-sn:semicolon" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:semicolon" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>The semicolon in \(f(t;\boldsymbol{\theta})\) just indicates that \(\boldsymbol{\theta}\) does not change often like \(t\) does. We optimize over \(\boldsymbol{\theta}\), but we only ever solve Schrödinger&#39;s equation for a constant value of \(\boldsymbol{\theta}\).<span class="sidenote-delimiter">] </span></span> We are searching for control parameters \(\boldsymbol{\theta}\) which determine the control functions \(\{f_i(t;\boldsymbol{\theta})\}\), which determine the Hamiltonian \(H(t)\), which controls the dynamics of the system, in order to minimize the infidelity between \(\boldsymbol{\psi}(T)\) and the target state \(\boldsymbol{\psi}_{\textrm{Target}}\).</p>
+<p>Written in terms of \(\boldsymbol{\theta}\), the optimization problem is now a nonlinear programming &#40;NLP&#41; problem with no constraints, where Schrödinger&#39;s equation is solved numerically to find \(\boldsymbol{\psi}(T)\) and evaluate the objective function in &#40;5&#41;. Constraints may be added, for example to keep the amplitude of the control functions below some maximum determined by experimental constraints. This NLP may be solved by direct-search methods<label for="sn-sn:nelder-mead" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:nelder-mead" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>E.g. Nelder-Mead.<span class="sidenote-delimiter">] </span></span>, or by gradient-based methods.<label for="sn-sn:gradient-methods" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:gradient-methods" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>E.g., gradient descent, ADAM, or quasi-Newton methods such as L-BFGS.<span class="sidenote-delimiter">] </span></span> True second-order Newton methods could also be used, but they require computing the Hessian of the objective function, which is very computationally expensive.</p>
+<h3 id="gate_design_problems"><a href="#gate_design_problems" class="header-anchor">Gate Design Problems</a></h3>
+<p>Quantum gates are the basic building blocks of quantum algorithms. In this way, they are analogous to classical logic gates.<label for="sn-sn:logic-gates" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:logic-gates" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>AND, OR, NOT, XOR, etc.<span class="sidenote-delimiter">] </span></span> Each gate is a unitary transformation which acts on a subsystem of the full quantum system.<label for="sn-sn:subsystem" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:subsystem" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>E.g., it operates on only a few qubits in a quantum computer consisting of many qubits.<span class="sidenote-delimiter">] </span></span> An algorithm may be specified using a circuit diagram, which maps out the gates used in a quantum algorithm, which qubits they are applied to, and in what order.</p>
+
+<figure style="text-align:center;">
+  <img src="/assets/img/QFT_circuit.png" style="width: 90%; max-width: 700px;">
+  <figcaption>Circuit diagram of the Quantum Fourier Transform algorithm.</figcaption>
+</figure>
+
+<p>To characterize a gate, it is sufficient to know how the gate transforms the elements of a basis of the subsystem. This allows us to specify a gate using a truth table, the same way we would specify a classical logic gate. For example, the truth table of a CNOT &#40;Controlled NOT&#41; gate is given below, and the matrix representation of the gate &#40;i.e. the unitary transformation it applies, in the standard/computational basis&#41; follows.</p>
+<table><tr><th align="center">Initial State</th><th align="center">Final State</th></tr><tr><td align="center">\(\vert 00\rangle\)</td><td align="center">\(\vert 00\rangle\)</td></tr><tr><td align="center">\(\vert 01\rangle\)</td><td align="center">\(\vert 01\rangle\)</td></tr><tr><td align="center">\(\vert 10\rangle\)</td><td align="center">\(\vert 11\rangle\)</td></tr><tr><td align="center">\(\vert 11\rangle\)</td><td align="center">\(\vert 10\rangle\)</td></tr></table>
+\[\operatorname{CNOT}\boldsymbol{\psi} =  \begin{bmatrix}
+        1 & 0 & 0 & 0  \\
+        0 & 1 & 0 & 0  \\
+        0 & 0 & 0 & 1  \\
+        0 & 0 & 1 & 0  \\
+    \end{bmatrix}
+    \boldsymbol{\psi}.\]
+<p>Roughly speaking, this is very similar to the state preparation problem, only now we are looking for a Hamiltonian which transfers several initial states to several corresponding target states. Strictly speaking, we are looking for a Hamiltonian which generates a target unitary matrix \(U_{\textrm{Target}}\). To see why optimizing for a specific target unitary matrix is different than optimizing the ability of the unitary to prepare several final states from several initial states, consider the unitaries \(U_A = \left[\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right]\) and \(U_B = \left[\begin{smallmatrix} 0 & 1 \\ i & 0 \end{smallmatrix}\right]\). We have \(U_A |0\rangle = |1\rangle\), \(U_A|1\rangle=|0\rangle\), \(U_B|0\rangle=i|1\rangle\), \(U_B|1\rangle=|0\rangle\). Because the global phase of a state cannot be measured, from a multiple state preparation point of view, the two unitaries both &quot;perfectly&quot; perform the state preparations \(|0\rangle \rightarrow |1\rangle\), \(|1\rangle \rightarrow |0\rangle\). The unitaries create different relative phases &#40;which are measurable&#41; when they operate on states other than the initial states in the state preparation problems: \(U_A\sqrt{2}^{-1}\left(|0\rangle+|1\rangle\right)=\sqrt{2}^{-1}\left(|1\rangle+|0\rangle\right)\), \(U_B\sqrt{2}^{-1}\left(|0\rangle+|1\rangle\right)=\sqrt{2}^{-1}\left(i|1\rangle+|0\rangle\right)\).</p>
+<p>When we say a Hamiltonian generates a unitary matrix, we mean that the dynamics caused by the Hamiltonian &#40;according to Schrödinger&#39;s equation&#41; can be represented by a unitary time-evolution matrix \(U(t)\):</p>
+\[\boldsymbol{\psi}(t) = U(t)\boldsymbol{\psi}_0 = e^{-i\int H(t)dt}\boldsymbol{\psi}_0.\]
+<p>We want to choose a Hamiltonian &#40;parameterized through \(\boldsymbol{\theta}\)&#41;, which over a period of time \(0 \leq t \leq T\) generates a unitary \(U(T)\) that is &quot;close&quot; to \(U_{\textrm{Target}} \in \mathbb{C}^{N \times N}\). As before, we need a way to quantify the &quot;closeness&quot; of two unitaries. We use the <em>gate infidelity</em>:</p>
+<div class="numbered-eq"></p>
+\[F(U_\alpha, U_\beta) = \frac{1}{N^2}|\langle U_\alpha,U_\beta\rangle_F|^2 = \frac{1}{N^2}|\operatorname{Tr}[U_\alpha^\dagger U_\beta]|^2.\]
+<p></div>
+<p><label for="sn-sn:frobenius" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:frobenius" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>The Frobenius inner product \(\langle A, B \rangle_F = \operatorname{Tr}[A^\dagger B]\) can be computed simply as \(\sum_{j,k} \overline{A}_{j,k}B_{j,k}\).<span class="sidenote-delimiter">] </span></span> As with the state fidelity, the gate infidelity takes a value between \(0\) and \(1\), and is invariant to changes in the global phase of the unitaries.</p>
+<p>Just as we did with state preparation problems, we parameterize the control functions in terms of a control vector \(\boldsymbol{\theta}\) so we can formulate the quantum optimal control problem as an NLP problem, which can be solved computationally.<label for="sn-sn:identity" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:identity" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>\(I_N\) denotes the \(N\) by \(N\) identity matrix.<span class="sidenote-delimiter">] </span></span></p>
+<div class="numbered-eq"></p>
+\[\underset{\boldsymbol{\theta}}{\operatorname{minimize}}\ \  1 - \frac{1}{N^2}|\operatorname{Tr}[U_{\textrm{Target}}^\dagger U(T)]|^2,\]
+<p></div>
+\[\textrm{where}\ \ \frac{d}{dt}U(t) = -i\left(H_d + \sum_{n=1}^{N_c} f_n(t;\boldsymbol{\theta})H_{c,n}\right)U(t),\quad U(0) = I_{N}.\]
+<h2 id="grape_optimization"><a href="#grape_optimization" class="header-anchor">GRAPE Optimization</a></h2>
+<p>Optimizing even a two-qubit state transfer or gate design problem is moderately challenging, and three-qubit problems are quite difficult.<label for="sn-sn:levels" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:levels" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Especially when the qubits are not treated as true two-level systems, but as 3 or 4 level systems, which is more accurate &#40;technically, for most quantum computing architectures each qubit has an infinite number of levels&#41;.<span class="sidenote-delimiter">] </span></span> As the systems become more difficult to control, more control parameters are typically needed in order to find a suitable set of control functions. The increased number of control parameters make the optimization more challenging due to the increased number of search dimensions, but gradient-based methods excel at navigating high-dimensional optimization landscapes.<label for="sn-sn:barren-plateau" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:barren-plateau" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Although as the number of qubits increases, many optimization tasks suffer from the <em>barren plateau</em> problem, which makes optimization extremely difficult even with gradient-based methods.<span class="sidenote-delimiter">] </span></span> To use these methods, we need to be able to compute the gradient. A naive way is to approximate the partial derivatives of the objective function using finite differences, e.g.</p>
+\[\frac{\partial \mathcal{J}}{\partial \theta_n} \approx \frac{\mathcal{J}(\boldsymbol{\theta} + h \boldsymbol{e}_n) - \mathcal{J}(\boldsymbol{\theta})}{h},\]
+<p><label for="sn-sn:standard-basis" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:standard-basis" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>We denote the \(n\)-th vector in the standard basis by \(\boldsymbol{e}_n\).<span class="sidenote-delimiter">] </span></span> but then the gradient is inexact, and most importantly, computing the gradient a single time requires solving at least as many Schrödinger equations as there are control parameters.</p>
+<p>The GRAPE &#40;<strong>GR</strong>adient <strong>A</strong>scent <strong>P</strong>ulse <strong>E</strong>ngineering&#41; method &#40;<a href="https://doi.org/10.1016/j.jmr.2004.11.004">Khaneja et al., 2005</a>&#41; cleverly computes the gradient exactly, and with a cost of solving only two Schrödinger equations, regardless of the number of control parameters. It does this by using a piecewise constant control pulse ansatz, where the gate duration is divided into \(n_c\) time intervals of width \(\Delta t = T/n_c\), and the control functions are constant during each time interval. Specifically, in &#40;4&#41;, the basis functions are</p>
+\[b_{j,k}(t) = \begin{cases}
+     1, & \text{if }\ (k-1)\frac{T}{n_c} \leq t  < k\frac{T}{n_c} \\
+     0, & \text{otherwise}
+    \end{cases}\]
+
+<figure style="text-align:center;">
+  <img src="/assets/img/grape_control.svg" style="width: 80%; max-width: 400px;">
+  <figcaption>An example of a piecewise constant control function, the kind which the GRAPE method uses.</figcaption>
+</figure>
+
+<p>Simply stated, \(\Theta_{j,k}\) is the amplitude of the \(j\)-th control function during the \(k\)-th time interval.<label for="sn-sn:awg" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:awg" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>This control pulse ansatz may seem arbitrary, but the control functions are usually shaped using arbitrary waveform generators, for which the idealized output <em>is</em> piecewise constant.<span class="sidenote-delimiter">] </span></span></p>
+<p>For simplicity, we will consider a problem with only one control Hamiltonian, and no drift Hamiltonian.</p>
+\[\frac{d}{dt}U(t) = -if_1(t;\boldsymbol{\theta})H_{c,1} U(t),\quad U_0 = I_{N}.\]
+<p>Because the Hamiltonian is constant across each time interval, the time evolution across each interval can be computed using matrix exponentials. And we can write the time evolution across the whole duration as</p>
+<div class="numbered-eq"></p>
+\[U(T) = U_{n_c} \cdots U_1 U(0) = e^{-i\theta_{n_c} H_{c,1} T / n_c} \cdots e^{-i\theta_1 H_{c,1} T / n_c} U(0).\]
+<p></div>
+<p>Now, the partial derivatives of the gate infidelity are</p>
+<div class="numbered-eq"></p>
+\[\frac{\partial}{\partial\theta_n}\left(1 - \frac{1}{N^2}\left|\operatorname{Tr}\left[U_{\textrm{Target}}^\dagger U(T)\right]\right|^2\right) = -\frac{2}{N^2}\operatorname{Re}\left(\operatorname{Tr}\left[U_{\textrm{Target}}^\dagger \frac{\partial U(T)}{\partial\theta_n}\right] \overline{\operatorname{Tr}\left[U_{\textrm{Target}}^\dagger U(T)\right]}\right).\]
+<p></div>
+<p>Performing the matrix multiplications and evaluating the traces in the above expression is cheap, but computing \(\partial U(T) / \partial \theta_n\)<label for="sn-sn:sensitivity" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:sensitivity" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>\(\partial U(T) / \partial \theta_n\) is sometimes called a <em>sensitivity</em>.<span class="sidenote-delimiter">] </span></span> for each \(n=1,\dots,n_c\) is expensive. Naively, they could be obtained for each \(\theta_n\) by solving a system of ODEs<label for="sn-sn:ode-intuition" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:ode-intuition" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Perhaps we could have suspected this intuitively. Changing a control parameter changes the dynamics, so to know how the state at the end of the dynamics changes with respect to each control parameter we need to look at a new dynamical system for each control parameter.<span class="sidenote-delimiter">] </span></span> similar to Schrödinger&#39;s equation, but with a forcing term.<label for="sn-sn:goat" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:goat" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>This is actually done in the GOAT &#40;<strong>G</strong>radient <strong>O</strong>ptimization of <strong>A</strong>nalytic Con<strong>T</strong>rols&#41; method &#40;<a href="https://doi.org/10.1103/PhysRevLett.120.150401">Machnes et al., 2018</a>&#41;.<span class="sidenote-delimiter">] </span></span></p>
+\[\frac{d}{dt}\frac{\partial U(t)}{\partial\theta_n} = -if_1(t;\boldsymbol{\theta})H_{c,1}\frac{\partial U(t)}{\partial\theta_n} -i\frac{\partial f_1(t;\boldsymbol{\theta})}{\partial\theta_n}H_{c,1}U(t).\]
+<p>But, because only the \(n\)-th unitary in &#40;8&#41; depends on \(\theta_n\), we can write \(\partial U(T)/\partial \theta_n\) analytically as the simple expression</p>
+\[\frac{\partial U(T)}{\partial\theta_n} = -i\Delta t\, U_{n_c} \cdots U_{n+1}H_{c,1}U_n U_{n-1} \cdots U_1 U(0).\]
+<p>Evaluating the partial derivative only involves inserting one extra matrix multiplication into the sequence of unitaries that we apply to \(U(0)\) in order to get \(U(T)\). Even better, we can write</p>
+\[U_{\textrm{Target}}^\dagger U(T) = \left(U_{n+1}^\dagger \cdots U_{n_c}^\dagger U_{\textrm{Target}}\right)^\dagger \left( U_n \cdots U_1 U(0)\right),\]
+<p>and</p>
+<div class="numbered-eq"></p>
+\[U_{\textrm{Target}}^\dagger \frac{\partial U(T)}{\partial\theta_n} = -i\Delta t \left(U_{n+1}^\dagger \cdots U_{n_c}^\dagger U_{\textrm{Target}}\right)^\dagger H_{c,1}\left( U_n \cdots U_1 U(0)\right).\]
+<p></div>
+<p>Then the procedure is to first compute \(U(T) = U_{n_c} \cdots U_1 U(0)\). Then, for \(n = n_c,\dots,1\), use &#40;10&#41; to compute \(U_{\textrm{Target}}^\dagger (\partial U(T)/\partial\theta_n)\). Because \(U_{n+2}^\dagger\cdots U_{n_c}^\dagger U_{\textrm{Target}}\) and \(U_{n-1}\cdots U_1 U(0)\) were already computed during the previous iteration, this only requires computing two matrix exponentials<label for="sn-sn:store-exponentials" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:store-exponentials" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>The matrix exponentials \(U_1,\dots,U_n\) may be computed once and stored, if there is sufficient memory available.<span class="sidenote-delimiter">] </span></span> and performing three matrix-matrix multiplications, which is much less expensive than computing \(n_c\) matrix exponentials<label for="sn-sn:expensive-exponentials" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:expensive-exponentials" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>Computing matrix exponentials is a computationally expensive operation, which is a drawback of the GRAPE method.<span class="sidenote-delimiter">] </span></span> and performing \(n_c+1\) matrix-matrix multiplications, which is the cost of computing and multiplying all the unitaries in &#40;10&#41;. During each iteration, once we have computed \(U_{\textrm{Target}}^\dagger (\partial U(T)/\partial\theta_n)\), we can use &#40;9&#41; to compute the \(n\)-th partial derivative of the objective function &#40;the infidelity&#41;. This concludes the method.</p>
+<p>The GRAPE method was an important development, made around 2005. Since then, major improvements have been made, but modern developments in <em>open-loop</em><label for="sn-sn:open-loop" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:open-loop" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>In quantum optimal control, open-loop means completely simulation-based, with no experimental feedback. If there is experimental feedback, the method is called a closed-loop method.<span class="sidenote-delimiter">] </span></span> quantum optimal control generally still rest on doing some kind of forward evolution, adjoint evolution scheme which produces exact gradients and does not scale heavily in cost with the number of control parameters.</p>
+<p>The GRAFS &#40;<strong>GR</strong>adient <strong>A</strong>scent in <strong>F</strong>unction <strong>S</strong>pace&#41; method &#40;<a href="https://doi.org/10.1103/physreva.97.062346">Lucarelli, 2018</a>&#41; uses a similar technique as the GRAPE method; the control functions are piecewise constant, and the time evolution is performed using matrix exponentiation, which allows the gradient to be computed analytically and cheaply &#40;using a forward solve and an adjoint solve&#41;. The major difference is that although the control pulses are piecewise constant, the control parameters do not correspond directly to the amplitudes of the control functions across each time interval. Instead, the control functions are parameterized in terms of continuous basis functions, as we did in &#40;4&#41;. The control functions are then discretized into piecewise constant functions, and the relationship between the control parameters and the discretized function amplitudes is used to compute the gradient in an efficient way, similar to the GRAPE method.</p>
+<h2 id="questions"><a href="#questions" class="header-anchor">Questions</a></h2>
+<p>I have some questions I can&#39;t answer because I don&#39;t know enough about classical optimal control theory. I would appreciate any input from people more familiar with classical optimal control&#33;</p>
+<ol>
+<li><p>What would the Hamilton-Jacobi-Bellman equations look like for a quantum optimal control problem, and why don&#39;t we solve the quantum optimal control problem by solving the Hamilton–Jacobi–Bellman equations?<label for="sn-sn:hjb" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:hjb" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>My guess is that it has to do with the curse of dimensionality.<span class="sidenote-delimiter">] </span></span></p>
+</li>
+<li><p>Are the GRAPE method and similar methods &#40;methods that use a forward/adjoint scheme to compute the gradient&#41; the same as Pontryagin&#39;s maximum principle? If not, why don&#39;t we use it?<label for="sn-sn:pontryagin" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-sn:pontryagin" class="margin-toggle"/><span class="sidenote"><span class="sidenote-delimiter"> [</span>According to section 3 of the GRAFS paper &#40;<a href="https://doi.org/10.1103/physreva.97.062346">Lucarelli, 2018</a>&#41;, GRAPE is essentially Pontryagin&#39;s maximum principle with trivial costate dynamics.<span class="sidenote-delimiter">] </span></span></p>
+</li>
+</ol>
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Spencer Lee. Last modified: May 16, 2026.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+      </article> <!-- end of id=main -->
+  </div> <!-- end of id=layout -->
+  
+      <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+  
+  
+</body>
+</html>
