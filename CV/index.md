@@ -5,7 +5,7 @@ description = "Spencer Lee's academic CV — research experience, publications, 
 tags = ["CV", "resume"]
 +++
 
-Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé.
+Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé (last updated June 2026).
 
 Click [here](/assets/pdf/SpencerLeeCV.pdf) to download my CV in PDF format, or
 read the web version below.
