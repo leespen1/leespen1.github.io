@@ -108,7 +108,9 @@ var quotes = [
   {text: "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem.", author: "John Tukey"},
   {text: "The way you make code last a long time is you minimize dependencies that are likely to change and, to the extent you must take such dependencies, you minimize the contact surface between your program and those dependencies.", author: "Johnathan Blow"},
   {text: "As machines become more powerful, the efficiency of algorithms grows more important, not less.", author: "Nick Trefethen"},
-  {text: " A computational study is unlikely to lead to real scientific progress unless the software environment is convenient enough to encourage one to vary parameters, modify the problem, play around.", author: "Nick Trefethen"}
+  {text: "A computational study is unlikely to lead to real scientific progress unless the software environment is convenient enough to encourage one to vary parameters, modify the problem, play around.", author: "Nick Trefethen"},
+  {text: "The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.", author: "Edsger W. Dijkstra"}
+  {text: "Program testing can best show the presence of errors but never their absence.", author: "Edsger W. Dijkstra"}
 ];
 var today = new Date();
 var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
