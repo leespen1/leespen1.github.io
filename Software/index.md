@@ -27,6 +27,9 @@ using the package.
 ## Subtitle Player
 
 [Subtitle Player](/Software/subtitle-player/) is a small web app I made for
-reading subtitles on your phone while a movie plays on the TV. Load an `.srt` or
-`.vtt` file, press play the moment the movie starts, and nudge the sync if it
-drifts. It runs entirely in your browser, so nothing is uploaded anywhere.
+reading subtitles on your phone while a movie plays on the TV. It runs entirely in your browser with no advertisments, and it's 100% free and open source!
+
+Load an `.srt` or `.vtt` file, press play the moment the movie starts, and
+adjust the sync to line up the subtitles with the actual dialog, and enjoy!
+
+I made this so I could watch movies while in another country that doesn't have English subtitles on their streaming platforms.  
