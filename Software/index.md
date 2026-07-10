@@ -28,7 +28,7 @@ using the package.
 
 [Subtitle Player](https://spencerlee.net/subtitle-player/) is a small web app I
 made for reading subtitles on your phone while a movie plays on the TV. It runs
-entirely in your browser with no advertisments, and it's 100% free and
+entirely in your mobile or desktop browser with no advertisments, and it's 100% free and
 open-source! 
 
 I made this so I could watch movies on a TV while in another country that
