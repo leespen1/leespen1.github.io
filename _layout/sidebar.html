@@ -12,7 +12,7 @@
   </nav>
   <article id="main" role="main"> <!-- Closed in foot -->
     {{ispage index.html}}<div class="header">
-      <h1>{{isdef page_title}}{{fill page_title}}{{end}}{{isnotdef page_title}}{{fill title}}{{end}}</h1>
+      <h1>{{isdef page_title}}{{fill page_title}}{{end}}{{isnotdef page_title}}{{isnotempty title}}{{fill title}}{{end}}{{end}}</h1>
       <h2>Computational Mathematics<br>Scientific Software<br>Quantum Optimal Control</h2>
     </div>{{end}}
-    {{isnotpage index.html}}<div class="franklin-content"><h1 class="page-title">{{isdef page_title}}{{fill page_title}}{{end}}{{isnotdef page_title}}{{fill title}}{{end}}</h1>{{isnotpage BlogPosts/index.html}}{{ispage BlogPosts/*}}<p class="post-date">{{fill date}}</p>{{end}}{{end}}</div>{{end}}
+    {{isnotpage index.html}}{{isnotpage tag/*}}<div class="franklin-content"><h1 class="page-title">{{isdef page_title}}{{fill page_title}}{{end}}{{isnotdef page_title}}{{isnotempty title}}{{fill title}}{{end}}{{end}}</h1>{{isnotpage BlogPosts/index.html}}{{ispage BlogPosts/*}}<p class="post-date">{{fill date}}</p>{{end}}{{end}}</div>{{end}}{{end}}
