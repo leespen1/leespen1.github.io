@@ -23,3 +23,10 @@ on QuantumGateDesign.jl at the
 [SIAM Annual Meeting 2025](https://www.siam.org/conferences-events/siam-conferences/an25/),
 which walks through setting up and solving quantum optimal control problems
 using the package.
+
+## Subtitle Player
+
+[Subtitle Player](/Software/subtitle-player/) is a small web app I made for
+reading subtitles on your phone while a movie plays on the TV. Load an `.srt` or
+`.vtt` file, press play the moment the movie starts, and nudge the sync if it
+drifts. It runs entirely in your browser, so nothing is uploaded anywhere.
