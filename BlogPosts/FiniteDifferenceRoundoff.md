@@ -40,12 +40,12 @@ f_derivative_approximation = (f(x0+h) - f(x0))/h
 
 What gives? We know that $f'(x) = 2e^{2x}$, so we should have $f'(1) = 2e^2 = 14.7781121978613$, but we got
 $0$. Well, let's see what happens when we add $x_0$ and $h$.
-```julia:./code/ex1
+```julia:./code/ex2
 x0 = 1.0
 h = 5e-324
 @show x0 + h
 ```
-\output{./code/ex1}
+\output{./code/ex2}
 
 We can't represent the number $1 + 5\times 10^{-324}$ in 64-bit floating point
 representation. Instead, the value gets rounded off to the nearest number,
@@ -56,16 +56,16 @@ $f'(1) = 0$ for *any* function $f(x)$.
 To fix this, let's try the smallest value of $h$ for which $x_0+h \neq x_0$ in
 the computer. The function `eps(T)` gives the difference between 1 and the next largest
 number of type `T`.
-```julia:./code/ex1
+```julia:./code/ex3
 h = eps(Float64)
 @show h
 @show 1+h
 ```
-\output{./code/ex1}
+\output{./code/ex3}
 
 We now have $1+h \neq 1$. Does this fix our issue and give us an accurate
 approximation of $f'(1)$? Not quite. 
-```julia:./code/ex1
+```julia:./code/ex4
 f(x) = exp(2*x)
 x0 = 1.0
 h = eps(Float64)
@@ -76,7 +76,7 @@ f_derivative_analytic = 2*exp(2*x0)
 @show f_derivative_approximation
 @show f_derivative_analytic
 ```
-\output{./code/ex1}
+\output{./code/ex4}
 
 ## Choosing an Ideal $h$
 We are in the ballpark of the analytic value of $f'(1)$, but our approximation
@@ -91,12 +91,12 @@ Roughly speaking, this means we have about 16 digits of precision in any number
 we represent. Consequently, any number $c$ which we represent may actually be off by
 an amount around $c\times\epsilon_M$. We can observe this by increasing the
 precision of our floating point numbers:
-```julia:./code/ex1
+```julia:./code/ex5
 using Quadmath
 @show Float64(1.1)
 @show Float128(Float64(1.1))
 ```
-\output{./code/ex1}
+\output{./code/ex5}
 
 We see that the 64-bit version of $1.1$ actually stores a number closer to 
 $1.1 + 8\times 10^{-17}$. This may not seem like a very big deal since the
@@ -105,12 +105,12 @@ in the subtraction of nearly equal numbers. Consider the two nearly equal
 numbers $a = 3.3 + 3\times 10^{-16}$ and $b = 3.3$. Analytically, we should have
 $a - b = 3\times 10^{-16}$. But let's try performing that computation with
 64-bit floating point numbers:
-```julia:./code/ex1
+```julia:./code/ex6
 a = 3.3000000000000003
 b = 3.3
 @show a-b
 ```
-\output{./code/ex1}
+\output{./code/ex6}
 
 We expected $a-b = 3\times 10^{-16}$, but we got 
 $a-b \approx 4.4 \times 10^{-16}$. Although the error is small compared to $a$
@@ -118,12 +118,12 @@ and $b$, it is significant compared to the analytic value of $a-b$. We went from
 having 16 digits of precision in $a$ and $b$ to having not even one digit of
 precision in $a-b$. This may seem like an extreme example, but we can see
 similar effects for something less extreme:
-```julia:./code/ex1
+```julia:./code/ex7
 a = 3.30003
 b = 3.3
 @show a-b
 ```
-\output{./code/ex1}
+\output{./code/ex7}
 $a$ and $b$ are no longer quite so close, and we have 11 digits of precision in
 $a-b$. There is still a noticeable loss of precision, although it is not as
 catastrophic as before.
@@ -244,7 +244,7 @@ very small.
 I used calculus to find a critical point of \eqref{eq:minimize}. If we wanted to
 be less fancy about finding the minimum, we could have simply plotted each of the terms
 in that equation on a log-log scale and found the point where they intersect.
-```julia:myplot1
+```julia:myplot2
 g1(h) = 1e-16 / h
 g2(h) = h
 
@@ -290,7 +290,7 @@ which can be minimized by choosing
     h_{\textrm{ideal}} = \epsilon_M^{1/3} \approx 10^{-5.3} \implies
     \textrm{Error} \approx 10^{-10.7}.
 \end{equation*}
-```julia:myplot1
+```julia:myplot3
 f(x) = exp(2*x)
 fprime_central_diff(x, h) = (f(x+h) - f(x-h)) / (2*h)
 
