@@ -5,7 +5,7 @@ description = "Spencer Lee's academic CV — research experience, publications, 
 tags = ["CV", "resume"]
 +++
 
-Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé (last updated June 2026).
+Click [here](/assets/pdf/SpencerLeeResume.pdf) to download my resumé (last updated August 2026).
 
 Click [here](/assets/pdf/SpencerLeeCV.pdf) to download my CV in PDF format, or
 read the web version below.
@@ -29,6 +29,9 @@ Ph.D. in Computational Mathematics, Science, & Engineering
 @@
 @@cv-entry-meta
 Michigan State University, East Lansing, MI, GPA: 3.94/4.0
+@@
+@@cv-description
+Expected graduation October 2026.
 @@
 @@
 
@@ -108,7 +111,13 @@ Paul and Wilma Dressel Endowed Scholarship for Mathematics (\$1,250)
 
 ## Publications
 
+### Published Articles
+
 {{cv_publications}}
+
+### Submitted Articles
+
+{{cv_submitted_articles}}
 
 ## Technical Reports and White Papers
 
@@ -124,13 +133,59 @@ Paul and Wilma Dressel Endowed Scholarship for Mathematics (\$1,250)
 
 ## Skills
 
+@@cv-skills
+
 @@cv-entry
 @@cv-entry-header
 @@cv-dates
 Programming
 @@
 @@cv-title
-Julia, Python, C, C++, CUDA, Git, LaTeX, Claude Code, Linux OS, VHDL, Matlab, Mathematica
+Julia, Python, C, C++, VHDL, Matlab, Mathematica
+@@
+@@
+@@
+
+@@cv-entry
+@@cv-entry-header
+@@cv-dates
+HPC & Sci. Computing
+@@
+@@cv-title
+CUDA, MPI, OpenMP, SLURM, Adjoint Methods, High-Order Methods, Profiling
+@@
+@@
+@@
+
+@@cv-entry
+@@cv-entry-header
+@@cv-dates
+Quantum Computing
+@@
+@@cv-title
+QuTiP, Qiskit, CUDA-Q, Pulse-Level Control, QAOA, Error Mitigation
+@@
+@@
+@@
+
+@@cv-entry
+@@cv-entry-header
+@@cv-dates
+Machine Learning
+@@
+@@cv-title
+TensorFlow, Scikit-Learn, Lux.jl, Transfer Learning, Scientific ML
+@@
+@@
+@@
+
+@@cv-entry
+@@cv-entry-header
+@@cv-dates
+Tools
+@@
+@@cv-title
+Git, Linux, Tests & CI, Claude Code, LaTeX
 @@
 @@
 @@
@@ -155,4 +210,6 @@ Soft Skills
 Leadership, Independent Learning, Communication, Presentation, Teamwork
 @@
 @@
+@@
+
 @@

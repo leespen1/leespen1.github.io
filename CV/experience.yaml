@@ -9,24 +9,33 @@
   location: "East Lansing, MI"
   items:
     - >-
-      Created the Julia software package QuantumGateDesign.jl, for optimal control
-      of quantum systems using smooth pulses. Finds ideal pulses quickly using
-      high-order time steps and second-order optimization.
+      Created and maintain
+      \href{https://github.com/leespen1/QuantumGateDesign.jl}{QuantumGateDesign.jl},
+      an open-source Julia package (CI tests, hosted docs) for fast and accurate
+      pulse-level optimal control of superconducting transmon qubits.
     - >-
-      Derived discrete adjoint equations for high-order Hermite methods applied
-      to Schrödinger's equation, enabling fast and exact gradient computations
-      for quantum optimal control.
+      Demonstrated $3$--$13\times$ faster CNOT gate design than Störmer-Verlet at
+      $10^{-3}$--$10^{-5}$ infidelity targets, using the high-order Hermite methods
+      and discrete adjoints of QuantumGateDesign.jl
+      \href{https://doi.org/10.1016/j.jcp.2026.114697}{(\emph{J. Comput. Phys., 2026})}.
     - >-
-      Investigated using Filon methods to efficiently integrate high-frequency
-      systems of ODEs, e.g. Schrödinger's equation for superconducting qubits.
+      Derived Filon methods that simulate highly oscillatory quantum systems
+      $6\times$ faster than same-order Hermite methods, with no rotating-wave
+      approximation
+      \href{https://doi.org/10.48550/arXiv.2607.13580}{(arXiv:2607.13580; submitted to
+      \emph{SIAM J.\ Sci.\ Comput.})}.
     - >-
-      Researched using neural ODEs to learn computationally cheap Magnus expansion
-      solutions to Schrödinger's equation for accelerated simulation of quantum
-      systems under external control.
+      Built a transfer-learning pipeline, from dataset generation through model
+      training, that retunes control pulses to preserve gate fidelity on qubits with
+      shifted transition frequencies.
+    - >-
+      Currently designing neural-network surrogate models for controlled qubit
+      dynamics using learned Magnus expansions, enabling state-vector simulation with
+      large time steps at low computational cost.
 
 - dates: "2023, 2025"
   title: "Long Workshop Participant"
-  org: "Institute for Pure and Applied Mathematics, University of California, Los Angeles"
+  org: "Institute for Pure and Applied Mathematics"
   location: "Los Angeles, CA"
   items:
     - >-
@@ -38,30 +47,30 @@
       functions for quantum control.
 
 - dates: "2024"
-  title: "Project Manager, G-RIPS"
-  org: "Advanced Institute for Materials Research, Tohoku Univeristy"
+  title: "Research Project Manager"
+  org: "Tohoku University (G-RIPS Program)"
   location: "Sendai, Japan"
   items:
     - >-
-      Led a group of five graduate students from the United States and Japan in
-      developing novel classical parameter-setting strategies for the Quantum
-      Approximate Optimization Algorithm (QAOA).
+      Implemented GPU-accelerated algorithms for classical parameter-setting of the
+      Quantum Approximate Optimization Algorithm (QAOA), in collaboration with
+      Mitsubishi Electric.
     - >-
-      Cooperated with researchers from Mitsubishi Electric, who sponsored
-      this project.
+      Led a five-member U.S.--Japan team that replaced a state-of-the-art
+      parameter-setting method with a low-cost analytical proxy of comparable
+      accuracy.
 
 - dates: "2023"
   title: "Visiting Scholar"
   org: "Los Alamos National Laboratory"
   location: "Los Alamos, NM"
   items:
-    - "Studied physical and numerical considerations for the simulation of plasmas."
     - >-
-      Accelerated simulation of runaway electrons in Tokamak fusion reactors
-      using CUDA-enabled GPUs.
+      Wrote CUDA and Thrust code to accelerate simulation of runaway electrons in
+      tokamak fusion reactors.
     - >-
-      Visualized electron behavior using Poincaré plots to identify
-      computationally challenging regions of the reactor.
+      Visualized electron dynamics using Poincaré plots to identify computationally
+      demanding reactor regions.
 
 - dates: "2022"
   title: "Computing Student Intern"
@@ -69,15 +78,16 @@
   location: "Livermore, CA"
   items:
     - >-
-      Used compositional techniques to create high-order integration methods from
-      low-order, symmetric ones in the quantum control package Juqbox.jl.
+      Calibrated gate pulses and implemented zero-noise extrapolation on real
+      superconducting qubit hardware.
     - >-
-      Demonstrated by numerical experiments that high-order methods accurately
-      simulate the physics of relevant 2-qubit systems at one-tenth the
-      computational cost of second-order Störmer-Verlet.
+      Measured hardware coherence and accuracy via Ramsey echo and randomized
+      benchmarking experiments.
     - >-
-      Achieved similar results using the implicit midpoint rule, a more
-      stable alternative, as the base method.
+      Developed high-order compositional integrators for quantum state-vector
+      simulation, which reduced the computational cost of high-accuracy 2-qubit
+      simulations by $10\times$
+      \href{https://doi.org/10.2172/1888108}{(\emph{LLNL Technical Report, 2022})}.
 
 - dates: "2020--2021"
   title: "Post-Baccalaureate Research Associate"
