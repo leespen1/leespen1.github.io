@@ -548,6 +548,22 @@ label.margin-toggle:not(.sidenote-number) {
   margin-bottom: 0.3em;
 }
 
+/* Skills are a label/value table rather than a dated entry, so the whole section is
+   one grid: every row then shares a label column sized to the longest label, instead
+   of each row starting its value wherever its own label happens to end. */
+.cv-skills {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5em 0.8em;
+}
+
+/* Promote the label and value spans to direct children of the grid above. This also
+   drops .cv-entry's margin-bottom, so the grid's row gap sets the spacing. */
+.cv-skills .cv-entry,
+.cv-skills .cv-entry-header {
+  display: contents;
+}
+
 .cv-bib-entry {
   display: flex;
   gap: 0.8em;
@@ -576,6 +592,9 @@ label.margin-toggle:not(.sidenote-number) {
   .cv-bib-entry {
     flex-direction: column;
     gap: 0.2em;
+  }
+  .cv-skills {
+    grid-template-columns: 1fr;
   }
 }
 

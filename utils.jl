@@ -4,6 +4,16 @@ using YAML
 # CV Helper Functions
 # ==============================================================================
 
+"""Convert the body of an inline-math span (the text between dollar signs) to HTML."""
+function math_to_html(body::AbstractString)
+    # 10^{-3} -> 10<sup>-3</sup>, then the hyphen becomes a real minus sign
+    body = replace(body, r"\^\{([^{}]*)\}" => s"<sup>\1</sup>")
+    body = replace(body, "<sup>-" => "<sup>&minus;")
+    body = replace(body, "\\times" => "&times;")
+    body = replace(body, "\\cdot" => "&middot;")
+    return strip(body)
+end
+
 """Convert LaTeX accent commands and special characters to Unicode."""
 function latex_to_html(s::String)
     umlaut = Dict("a"=>"ä","e"=>"ë","i"=>"ï","o"=>"ö","u"=>"ü",
@@ -30,10 +40,31 @@ function latex_to_html(s::String)
         ch = string(last(m))
         get(acute, ch, ch)
     end)
+    # \href{url}{text} -> <a href="url">text</a>. The text argument nests one level of
+    # braces, e.g. \href{...}{(\emph{J. Comput. Phys., 2026})}. URLs are set aside as
+    # placeholders so the rules below (notably -- -> &ndash;) cannot rewrite them.
+    href_re = r"\\href\{([^{}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}"
+    urls = String[]
+    s = replace(s, href_re => function(m)
+        c = match(href_re, m)
+        push!(urls, c.captures[1])
+        """<a href="%%URL$(length(urls))%%">$(c.captures[2])</a>"""
+    end)
+    # \emph{text} -> <em>text</em>
+    s = replace(s, r"\\emph\{([^{}]*)\}" => s"<em>\1</em>")
+    # $...$ -> HTML. Franklin does not run its math parser over hfun output, so inline
+    # math has to be converted here or the dollar signs reach the page verbatim.
+    s = replace(s, r"\$([^$]*)\$" => m -> math_to_html(strip(m, '$')))
+    # \  (escaped inter-sentence space, as in "SIAM J.\ Sci.\ Comput.") -> a space
+    s = replace(s, "\\ " => " ")
     # \& -> &
     s = replace(s, "\\&" => "&amp;")
     # -- -> en-dash (use HTML entity so Franklin doesn't interfere)
     s = replace(s, "--" => "&ndash;")
+    # Put the URLs back now that no further rewriting will touch them.
+    for (i, url) in enumerate(urls)
+        s = replace(s, "%%URL$(i)%%" => url)
+    end
     return s
 end
 
@@ -119,10 +150,10 @@ function parse_bibtex(filepath::String)
     return entries
 end
 
-"""Filter bib entries by keyword value."""
+"""Filter bib entries by keyword. An entry may carry several, e.g. "journal, published"."""
 function filter_by_keyword(entries::Vector{BibEntry}, kw::String)
     filter(entries) do e
-        get(e.fields, "keywords", "") == kw
+        kw in strip.(split(get(e.fields, "keywords", ""), ','))
     end
 end
 
@@ -166,10 +197,10 @@ function format_authors(raw::String)
     return join(names, ", ")
 end
 
-"""Render journal publications as HTML."""
-function hfun_cv_publications()
+"""Render the articles carrying `kw` (the bib's "published" / "submitted" status)."""
+function render_articles(kw::String)
     entries = parse_bibtex("CV/SpencerLeeBibliography.bib")
-    pubs = filter_by_keyword(entries, "journal")
+    pubs = filter_by_keyword(entries, kw)
     sort!(pubs, by=e -> (-bib_year(e), -bib_month(e)))
     io = IOBuffer()
     for e in pubs
@@ -204,6 +235,12 @@ function hfun_cv_publications()
     end
     return String(take!(io))
 end
+
+"""Render published journal articles as HTML."""
+hfun_cv_publications() = render_articles("published")
+
+"""Render submitted (not yet published) articles as HTML."""
+hfun_cv_submitted_articles() = render_articles("submitted")
 
 """Render tech reports as HTML."""
 function hfun_cv_techreports()
