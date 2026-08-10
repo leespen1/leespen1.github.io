@@ -4,7 +4,7 @@
 # producing a single-line string when parsed.
 
 - dates: "2021--Present"
-  title: "Graduate Research Assistant"
+  title: "PhD Researcher"
   org: "Michigan State University"
   location: "East Lansing, MI"
   items:
@@ -17,13 +17,14 @@
       Demonstrated $3$--$13\times$ faster CNOT gate design than Störmer-Verlet at
       $10^{-3}$--$10^{-5}$ infidelity targets, using the high-order Hermite methods
       and discrete adjoints of QuantumGateDesign.jl
-      \href{https://doi.org/10.1016/j.jcp.2026.114697}{(\emph{J. Comput. Phys., 2026})}.
+      \href{https://doi.org/10.1016/j.jcp.2026.114697}{(\emph{Journal of Computational
+      Physics, 2026})}.
     - >-
       Derived Filon methods that simulate highly oscillatory quantum systems
       $6\times$ faster than same-order Hermite methods, with no rotating-wave
       approximation
       \href{https://doi.org/10.48550/arXiv.2607.13580}{(arXiv:2607.13580; submitted to
-      \emph{SIAM J.\ Sci.\ Comput.})}.
+      \emph{SIAM Journal on Scientific Computing})}.
     - >-
       Built a transfer-learning pipeline, from dataset generation through model
       training, that retunes control pulses to preserve gate fidelity on qubits with
@@ -87,7 +88,8 @@
       Developed high-order compositional integrators for quantum state-vector
       simulation, which reduced the computational cost of high-accuracy 2-qubit
       simulations by $10\times$
-      \href{https://doi.org/10.2172/1888108}{(\emph{LLNL Technical Report, 2022})}.
+      \href{https://doi.org/10.2172/1888108}{(\emph{Lawrence Livermore National
+      Laboratory Technical Report, 2022})}.
 
 - dates: "2020--2021"
   title: "Post-Baccalaureate Research Associate"
