@@ -14,7 +14,12 @@ fi
 
 # Record what is currently deployed, so we can tell which pages the new build
 # actually changes. Empty on a first-ever deploy.
-git fetch -q origin $TARGET_BRANCH 2>/dev/null || true
+# Time-limited: a wedged SSH control master makes this hang indefinitely rather
+# than fail, which would stall the deploy before it has done any work.
+if ! timeout 60 git fetch -q origin $TARGET_BRANCH 2>/dev/null; then
+  echo "WARNING: could not refresh origin/$TARGET_BRANCH; using the local ref."
+  echo "  If this persists: ssh -O exit git@github.com"
+fi
 PREV_DEPLOY="$(git rev-parse -q --verify origin/$TARGET_BRANCH || true)"
 
 # Build the site using Franklin.jl
