@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        width=2.6in,
+        height=2in,
+        axis x line=middle,
+        axis y line=middle,
+        xlabel={$t$}, ylabel={$f_1(t;\thetab)$},
+        xtick={1,2,3,4,5,6,7},
+        xticklabels={},
+        ytick=\empty,
+        ymin=-1, ymax=1, xmin=0, xmax=7,
+        samples=100,
+        enlargelimits=true,
+        xlabel style={at={(axis cs:8.25,0)}, anchor=east}, % Move x label to the right
+        ylabel style={at={(axis cs:0,1.2)}, anchor=south}, % Move y label above
+        clip=false,
+        axis equal=false,
+    ]
+        \addplot[
+            thick,
+            const plot mark left,
+            domain=0:3,
+            range=-1:1,
+        ]
+        coordinates {
+            (0,1) (1,0.7) (2,-0.2) (3,0.-0.4) (4,-1) (5,-0.3) (6, 0.4) (7,0)
+        };
+        
+        % Width annotation
+        \draw[|<->|, thick] (axis cs:6,0.45) -- (axis cs:7,0.45);
+        \node[anchor=south] at (axis cs:6.5,0.45) {$\Delta t$};
+
+        % Height annotation
+        \draw[|<->|, thick] (axis cs:2.2,0.7) -- (axis cs:2.2,0);
+        \node[anchor=west] at (axis cs:2.2,0.35) {$\theta_2$};
+    \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,127 @@
+# YAML tip: >- is a "block scalar" that folds a multi-line string into a single
+# line (newlines become spaces) and strips the trailing newline. This lets you
+# wrap long LaTeX text across multiple lines here for readability while still
+# producing a single-line string when parsed.
+
+- dates: "2021--Present"
+  title: "PhD Researcher"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  items:
+    - >-
+      Created and maintain
+      \href{https://github.com/leespen1/QuantumGateDesign.jl}{QuantumGateDesign.jl},
+      an open-source Julia package (CI tests, hosted docs) for fast and accurate
+      pulse-level optimal control of superconducting transmon qubits.
+    - >-
+      Demonstrated $3$--$13\times$ faster CNOT gate design than Störmer-Verlet at
+      $10^{-3}$--$10^{-5}$ infidelity targets, using the high-order Hermite methods
+      and discrete adjoints of QuantumGateDesign.jl
+      \href{https://doi.org/10.1016/j.jcp.2026.114697}{(\emph{Journal of Computational
+      Physics, 2026})}.
+    - >-
+      Derived Filon methods that simulate highly oscillatory quantum systems
+      $6\times$ faster than same-order Hermite methods, with no rotating-wave
+      approximation
+      \href{https://doi.org/10.48550/arXiv.2607.13580}{(arXiv:2607.13580; submitted to
+      \emph{SIAM Journal on Scientific Computing})}.
+    - >-
+      Built a transfer-learning pipeline, from dataset generation through model
+      training, that retunes control pulses to preserve gate fidelity on qubits with
+      shifted transition frequencies.
+    - >-
+      Currently designing neural-network surrogate models for controlled qubit
+      dynamics using learned Magnus expansions, enabling state-vector simulation with
+      large time steps at low computational cost.
+
+- dates: "2023, 2025"
+  title: "Long Workshop Participant"
+  org: "Institute for Pure and Applied Mathematics"
+  location: "Los Angeles, CA"
+  items:
+    - >-
+      Collaborated with a diverse group of mathematicians, physicists, and computer
+      scientists from academia and industry on problems in quantum computing (2023)
+      and non-commutative optimal transport (2025).
+    - >-
+      Organized a working group exploring optimal-transport-inspired objective
+      functions for quantum control.
+
+- dates: "2024"
+  title: "Research Project Manager"
+  org: "Tohoku University (G-RIPS Program)"
+  location: "Sendai, Japan"
+  items:
+    - >-
+      Implemented GPU-accelerated algorithms for classical parameter-setting of the
+      Quantum Approximate Optimization Algorithm (QAOA), in collaboration with
+      Mitsubishi Electric.
+    - >-
+      Led a five-member U.S.--Japan team that replaced a state-of-the-art
+      parameter-setting method with a low-cost analytical proxy of comparable
+      accuracy.
+
+- dates: "2023"
+  title: "Visiting Scholar"
+  org: "Los Alamos National Laboratory"
+  location: "Los Alamos, NM"
+  items:
+    - >-
+      Wrote CUDA and Thrust code to accelerate simulation of runaway electrons in
+      tokamak fusion reactors.
+    - >-
+      Visualized electron dynamics using Poincaré plots to identify computationally
+      demanding reactor regions.
+
+- dates: "2022"
+  title: "Computing Student Intern"
+  org: "Lawrence Livermore National Laboratory"
+  location: "Livermore, CA"
+  items:
+    - >-
+      Calibrated gate pulses and implemented zero-noise extrapolation on real
+      superconducting qubit hardware.
+    - >-
+      Measured hardware coherence and accuracy via Ramsey echo and randomized
+      benchmarking experiments.
+    - >-
+      Developed high-order compositional integrators for quantum state-vector
+      simulation, which reduced the computational cost of high-accuracy 2-qubit
+      simulations by $10\times$
+      \href{https://doi.org/10.2172/1888108}{(\emph{Lawrence Livermore National
+      Laboratory Technical Report, 2022})}.
+
+- dates: "2020--2021"
+  title: "Post-Baccalaureate Research Associate"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  items:
+    - >-
+      Member of the FEX-Hub project for development of hardware to manage the flow
+      of trigger data from the ATLAS detector of the Large Hadron Collider.
+    - >-
+      Wrote object-oriented Python scripts to conduct Integrated Bit Error Ratio
+      Tests (IBERT) of multi-gigabit transceivers on FPGA and generate eye
+      diagrams to analyze accuracy when transmitting at high bandwidths.
+    - "Added new features to FPGA firmware using VHDL in Vivado Design Suite."
+
+- dates: "2019"
+  title: "Summer Research Associate"
+  org: "CERN"
+  location: "Geneva, Switzerland"
+  items:
+    - >-
+      Analyzed C firmware of a microcontroller for ATCA compliance as part of
+      upgrades to the Level 1 Calorimeter Trigger of the Large Hadron Collider.
+
+- dates: "2016--2020"
+  title: "Undergraduate Research Associate"
+  org: "Michigan State University"
+  location: "East Lansing, MI"
+  items:
+    - >-
+      Created an interactive Python GUI to run and display perfSONAR network
+      measurement tests, manage Ethernet switch stress tests, and generate
+      automated reports.
+    - >-
+      Organized and configured Linux test nodes for use in network stress tests.
