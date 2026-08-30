@@ -334,7 +334,8 @@ end
 """Return a clean canonical URL, stripping trailing 'index.html'."""
 function hfun_canonical_url()
     base = strip(Franklin.locvar(:website_url), '/')
-    fd = Franklin.locvar(:fd_url)
+    # fd_url already begins with '/', so strip it rather than doubling the separator
+    fd = lstrip(Franklin.locvar(:fd_url), '/')
     url = base * "/" * fd
     # Remove trailing index.html so /index.html -> / and /foo/index.html -> /foo/
     url = replace(url, r"index\.html$" => "")
