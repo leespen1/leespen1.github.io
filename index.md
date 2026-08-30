@@ -1,9 +1,9 @@
 +++
-title = "Spencer Lee — Computational Mathematics & Quantum Control"
+title = "Spencer Lee — Computational Math & Quantum Control"
 page_title = "Spencer Lee"
 tags = ["syntax", "code"]
 commonmark_safe = false
-description = "Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control."
+description = "Spencer Lee — computational mathematics and physics PhD candidate at Michigan State University. Developer of QuantumGateDesign.jl for quantum optimal control."
 image = "assets/HeadshotMay2026Cropped.jpg"
 +++
 
@@ -25,9 +25,9 @@ in our
 (or in the 
 [arXiv preprint](https://arxiv.org/abs/2505.09857)).
 
-I am looking for a job after I graduate! If you are looking for someone with
-experience in writing high-performance software for physics simulations,
-especially for quantum optimal control, please email me at
+I am looking for a job after I graduate! If you are looking for someone with an
+applied math background and experience in writing high-performance software for
+physics simulations, especially for quantum optimal control, please email me at
 [leespen1@msu.edu](mailto:leespen1@msu.edu), or contact me 
 [on LinkedIn](https://www.linkedin.com/in/spencer-lee-msu).
 

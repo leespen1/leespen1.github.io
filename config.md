@@ -19,7 +19,7 @@ generate_sitemap = false
 # RSS (the website_{title, descr, url} must be defined to get RSS)
 generate_rss = true
 website_title = "Spencer Lee"
-website_descr = "Spencer Lee — PhD candidate in Computational Mathematics at Michigan State University. Research in quantum optimal control, numerical methods, and scientific software."
+website_descr = "Spencer Lee — computational math PhD candidate at Michigan State University. Research in quantum optimal control, numerical methods, and scientific software."
 website_url   = "https://spencerlee.net/"
 +++
 
