@@ -342,6 +342,18 @@ function hfun_canonical_url()
     return url
 end
 
+"""Return the canonical URL of a tag page.
+
+Tag pages are rendered from `_layout/tag.html` outside the normal page
+pipeline, so `fd_url` is not populated there; the URL is rebuilt from the tag
+name using the same slug Franklin uses for the output directory.
+"""
+function hfun_tag_canonical_url()
+    base = strip(Franklin.locvar(:website_url), '/')
+    tag = Franklin.locvar(:fd_tag)
+    return base * "/tag/" * Franklin.refstring(tag) * "/"
+end
+
 function hfun_bar(vname)
   val = Meta.parse(vname[1])
   return round(sqrt(val), digits=2)
